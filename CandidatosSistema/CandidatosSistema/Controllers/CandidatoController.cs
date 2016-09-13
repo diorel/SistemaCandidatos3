@@ -43,7 +43,7 @@ namespace CandidatosSistema.Controllers
         public ActionResult Create()
         {
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave");
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve");
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave");
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
             ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave");
@@ -83,7 +83,7 @@ namespace CandidatosSistema.Controllers
             }
 
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.LocalidadId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
@@ -103,7 +103,7 @@ namespace CandidatosSistema.Controllers
                 return HttpNotFound();
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
             return View(candidato);
@@ -139,7 +139,7 @@ namespace CandidatosSistema.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
             return View(candidato);

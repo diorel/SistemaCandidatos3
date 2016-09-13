@@ -36,7 +36,7 @@
       <PropertyRef Name="EspecialidadId" />
     </Key>
     <Property Name="EspecialidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Calve" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Descripcion" Type="varchar" MaxLength="50" />
     <Property Name="Estado" Type="bit" />
     <Property Name="FechaCaptura" Type="date" />

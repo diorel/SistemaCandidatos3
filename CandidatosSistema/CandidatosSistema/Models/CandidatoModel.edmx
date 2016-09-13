@@ -41,7 +41,7 @@
             <PropertyRef Name="EspecialidadId" />
           </Key>
           <Property Name="EspecialidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Calve" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
@@ -320,11 +320,11 @@
             <PropertyRef Name="EspecialidadId" />
           </Key>
           <Property Name="EspecialidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Calve" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Especialidad" FromRole="Especialidad" ToRole="Candidato" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Candidato_Especialidad">
           <End Type="SisCandidatosModel.Especialidad" Role="Especialidad" Multiplicity="0..1" />
@@ -437,10 +437,10 @@
           <EntitySetMapping Name="Especialidad">
             <EntityTypeMapping TypeName="SisCandidatosModel.Especialidad">
               <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Calve" ColumnName="Calve" />
                 <ScalarProperty Name="EspecialidadId" ColumnName="EspecialidadId" />
               </MappingFragment>
             </EntityTypeMapping>

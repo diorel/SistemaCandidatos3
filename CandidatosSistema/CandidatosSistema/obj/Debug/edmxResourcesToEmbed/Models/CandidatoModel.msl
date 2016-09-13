@@ -71,10 +71,10 @@
     <EntitySetMapping Name="Especialidad">
       <EntityTypeMapping TypeName="SisCandidatosModel.Especialidad">
         <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
           <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Calve" ColumnName="Calve" />
           <ScalarProperty Name="EspecialidadId" ColumnName="EspecialidadId" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -44,7 +44,7 @@ namespace CandidatosSistema.Controllers
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave");
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve");
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace CandidatosSistema.Controllers
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             return View(candidato);
         }
 
@@ -84,7 +84,7 @@ namespace CandidatosSistema.Controllers
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             return View(candidato);
         }
 
@@ -104,7 +104,7 @@ namespace CandidatosSistema.Controllers
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Calve", candidato.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             return View(candidato);
         }
 
