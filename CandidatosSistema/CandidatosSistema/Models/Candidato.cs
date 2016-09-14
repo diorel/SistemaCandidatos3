@@ -40,6 +40,8 @@ namespace CandidatosSistema.Models
         public string Municipio_colonia { get; set; }
         public Nullable<int> EstatusId { get; set; }
         public string ComentarioEstatus { get; set; }
+        [Required(ErrorMessage = "Es requerido este dato")]
+        [Display(Name = "Area laboral", Description = "xxxxx")]
         public string Area { get; set; }
     
         public virtual Escolaridad Escolaridad { get; set; }

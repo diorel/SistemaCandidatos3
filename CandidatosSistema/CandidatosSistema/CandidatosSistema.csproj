@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\SueldoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -421,6 +422,7 @@
     <Content Include="Views\Filtro\Edit.cshtml" />
     <Content Include="Views\Filtro\Index.cshtml" />
     <Content Include="Views\Filtro\Busquedafilter.cshtml" />
+    <Content Include="Views\Reporte\reporteViw.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
