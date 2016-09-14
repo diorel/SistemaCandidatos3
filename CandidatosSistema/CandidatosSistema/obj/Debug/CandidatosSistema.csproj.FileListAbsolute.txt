@@ -404,6 +404,6 @@ C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSi
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.pdb
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.csprojResolveAssemblyReference.cache

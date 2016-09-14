@@ -11,13 +11,22 @@ namespace CandidatosSistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Candidato
     {
         public int CandidatoId { get; set; }
+        [Required(ErrorMessage = "El Nombre es requerido")]
+        [Display(Name = "Nombre de Candidato", Description = "xxxxx")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El Telefono es Requerido")]
+        [Display(Name = "Telefono de Candidato", Description = "xxxxx")]
         public string Telefono { get; set; }
+        [Required(ErrorMessage = "El Correo es Requerido")]
+        [Display(Name = "email de Candidato", Description = "xxxxx")]
         public string Correo { get; set; }
+        [Required(ErrorMessage = "Es campo es requerido")]
+        [Display(Name = "Estado", Description = "Estado")]
         public Nullable<int> LocalidadId { get; set; }
         public Nullable<int> SueldoId { get; set; }
         public Nullable<int> EscolaridadId { get; set; }
@@ -26,6 +35,8 @@ namespace CandidatosSistema.Models
         public string Capturista { get; set; }
         public Nullable<System.DateTime> FechaCaptura { get; set; }
         public string Archivo { get; set; }
+        [Required(ErrorMessage = "Es requerido este dato")]
+        [Display(Name = "Delegacion/Municipio", Description = "xxxxx")]
         public string Municipio_colonia { get; set; }
         public Nullable<int> EstatusId { get; set; }
         public string ComentarioEstatus { get; set; }

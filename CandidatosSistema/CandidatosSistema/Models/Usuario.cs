@@ -11,12 +11,18 @@ namespace CandidatosSistema.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Usuario
     {
         public int UsuarioId { get; set; }
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El Usuario es Requerido")]
+        [Display(Name = "Nombre Completo", Description = "xxxxx")]
         public string Usuario1 { get; set; }
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        [Required(ErrorMessage = "La contraseña es requerida")]
+        [Display(Name = "Contraseña", Description = "xxxxx")]
         public string Clave { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public Nullable<bool> Estado { get; set; }
