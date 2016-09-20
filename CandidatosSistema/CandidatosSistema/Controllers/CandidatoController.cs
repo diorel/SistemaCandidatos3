@@ -79,7 +79,7 @@ namespace CandidatosSistema.Controllers
 
                 db.Candidato.Add(candidato);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Busquedafilter");
             }
 
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
@@ -160,6 +160,7 @@ namespace CandidatosSistema.Controllers
             return View(candidato);
         }
 
+
         // POST: Candidato/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -170,6 +171,26 @@ namespace CandidatosSistema.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+        // Este es el metodo para la consulta
+
+        public ActionResult Busquedafilter(string Nombre)
+        {
+            var Candidato = from s in db.Candidato select s;
+
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                Candidato = Candidato.Where(x => x.Nombre.Contains(Nombre));
+            }
+            ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
+            return View(Candidato);
+
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {
