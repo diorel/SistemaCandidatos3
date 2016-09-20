@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoFiltroController.cs" />
+    <Compile Include="Controllers\CapturistaController.cs" />
     <Compile Include="Controllers\FiltroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
@@ -422,6 +423,13 @@
     <Content Include="Views\Filtro\Index.cshtml" />
     <Content Include="Views\Filtro\Busquedafilter.cshtml" />
     <Content Include="Views\Candidato\Busquedafilter.cshtml" />
+    <Content Include="Views\Capturista\Create.cshtml" />
+    <Content Include="Views\Capturista\Delete.cshtml" />
+    <Content Include="Views\Capturista\Details.cshtml" />
+    <Content Include="Views\Capturista\Edit.cshtml" />
+    <Content Include="Views\Capturista\Index.cshtml" />
+    <Content Include="Views\Capturista\FiltroCandidato.cshtml" />
+    <Content Include="Views\Capturista\Busquedafilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
