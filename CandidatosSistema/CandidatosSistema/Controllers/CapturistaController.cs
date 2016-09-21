@@ -120,7 +120,7 @@ namespace CandidatosSistema.Controllers
             {
                 db.Entry(candidato).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("FiltroCandidato");
+                return RedirectToAction("Busquedafilter");
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
