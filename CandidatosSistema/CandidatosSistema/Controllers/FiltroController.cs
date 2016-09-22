@@ -48,6 +48,14 @@ namespace CandidatosSistema.Controllers
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
             ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave");
+
+            ViewBag.Title = "Index";
+            ViewBag.Nombre = @Session["LogedUserFullname"].ToString();
+            ViewBag.Fecha = Convert.ToString(DateTime.Today);
+            ViewBag.Estado = true;
+
+
+
             return View();
         }
 
@@ -77,6 +85,10 @@ namespace CandidatosSistema.Controllers
                     Archivo.SaveAs(route);
                     candidato.Archivo = fileName;
                 }
+
+                candidato.EstadoCandidato = true;
+                candidato.EstatusId = 1;
+
 
                 db.Candidato.Add(candidato);
                 db.SaveChanges();
