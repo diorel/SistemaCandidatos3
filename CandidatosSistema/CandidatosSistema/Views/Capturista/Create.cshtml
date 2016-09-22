@@ -6,7 +6,7 @@
 }
 
 
-<h2>ALTA reclutador </h2>
+<h2>ALTA reclutador</h2>
 
 @using (Html.BeginForm("Create", "Capturista", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" ,  @Value = (string)ViewBag.Nombre  } })
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,7 +73,7 @@
             @Html.LabelFor(model => model.EstadoCandidato, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.EstadoCandidato, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @Value = (bool)ViewBag.Estado } })
+                    @Html.EditorFor(model => model.EstadoCandidato, new { htmlAttributes = new { @class = "form-control" , @disabled = "disabled" } })
                     @Html.ValidationMessageFor(model => model.EstadoCandidato, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -82,7 +82,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SueldoId, "EstatusId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("EstatusId", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                @Html.DropDownList("EstatusId", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled"})
                 @Html.ValidationMessageFor(model => model.SueldoId, "", new { @class = "text-danger" })
             </div>
         </div>

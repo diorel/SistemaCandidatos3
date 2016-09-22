@@ -85,6 +85,9 @@ namespace CandidatosSistema.Controllers
                     candidato.Archivo = fileName;
                 }
 
+                candidato.EstadoCandidato = true;
+                candidato.EstatusId = 1 ;
+
                 db.Candidato.Add(candidato);
                 db.SaveChanges();
                 return RedirectToAction("Busquedafilter");
