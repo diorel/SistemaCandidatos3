@@ -22,6 +22,7 @@ namespace CandidatosSistema.Models
         [Required(ErrorMessage = "El Telefono es Requerido")]
         [Display(Name = "Telefono de Candidato", Description = "xxxxx")]
         public string Telefono { get; set; }
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail no es valido")]
         [Required(ErrorMessage = "El Correo es Requerido")]
         [Display(Name = "email de Candidato", Description = "xxxxx")]
         public string Correo { get; set; }
