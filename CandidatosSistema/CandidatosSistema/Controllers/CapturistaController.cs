@@ -174,16 +174,28 @@ namespace CandidatosSistema.Controllers
 
         // Este es el metodo para la consulta
 
-        public ActionResult Busquedafilter(string Nombre)
+        public ActionResult Busquedafilter(string Nombre, string LocalidadId)
         {
+            ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
+
             var Candidato = from s in db.Candidato select s;
 
             if (!string.IsNullOrEmpty(Nombre))
             {
                 Candidato = Candidato.Where(x => x.Nombre.Contains(Nombre));
             }
-            ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
-            return View(Candidato);
+
+            if (!string.IsNullOrEmpty(LocalidadId))
+            {
+                int gr = Convert.ToInt32(LocalidadId);
+                return View(Candidato.Where(x => x.LocalidadId == gr));
+            }
+            else
+            {
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
+                return View(Candidato);
+            }
+
 
         }
 
