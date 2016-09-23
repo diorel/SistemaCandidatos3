@@ -189,21 +189,47 @@ namespace CandidatosSistema.Controllers
 
         // Este es el metodo para la consulta
 
-        public ActionResult Busquedafilter(string Nombre)
+        public ActionResult Busquedafilter(string Nombre, string LocalidadId, string SueldoId, string EscolaridadId, string EspecialidadId)
         {
+            ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
+            ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
+            ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave");
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave");
+
             var Candidato = from s in db.Candidato select s;
 
             if (!string.IsNullOrEmpty(Nombre))
             {
                 Candidato = Candidato.Where(x => x.Nombre.Contains(Nombre));
             }
-            ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
-            return View(Candidato);
 
+            if (!string.IsNullOrEmpty(LocalidadId))
+            {
+                int gr = Convert.ToInt32(LocalidadId);
+                return View(Candidato.Where(x => x.LocalidadId == gr));
+            }
+            if (!string.IsNullOrEmpty(SueldoId))
+            {
+                int sl = Convert.ToInt32(SueldoId);
+                return View(Candidato.Where(X => X.SueldoId == sl));
+            }
+            if (!string.IsNullOrEmpty(EscolaridadId))
+            {
+                int es = Convert.ToInt32(EscolaridadId);
+                return View(Candidato.Where(x => x.EscolaridadId == es));
+            }
+            if (!string.IsNullOrEmpty(EspecialidadId))
+            {
+                int ec = Convert.ToInt32(EspecialidadId);
+                return View(Candidato.Where(x => x.EspecialidadId == ec));
+            }
+
+            else
+            {
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
+                return View(Candidato);
+            }
         }
-
-
-
 
         protected override void Dispose(bool disposing)
         {
