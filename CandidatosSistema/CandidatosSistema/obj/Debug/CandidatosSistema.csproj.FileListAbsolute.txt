@@ -364,6 +364,7 @@ C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSi
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Newtonsoft.Json.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Owin.dll
@@ -375,6 +376,9 @@ C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSi
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\System.Web.WebPages.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\WebGrease.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.SqlServer.Types.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.AI.Web.xml
@@ -404,5 +408,16 @@ C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSi
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\obj\Debug\CandidatosSistema.pdb
