@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Reporting.WebForms;
+﻿using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +6,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CandidatosSistema
+namespace CandidatosSistema.Views.Filtro
 {
-    public partial class ReporteCadidatos : System.Web.UI.Page
+    public partial class Reporte : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+            if (!IsPostBack)
                 showrep("ReportesRys", "ReporteCandidatosActivo");
         }
 
@@ -27,6 +26,8 @@ namespace CandidatosSistema
 
 
         }
+
+
 
     }
 }

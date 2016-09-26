@@ -170,6 +170,13 @@ namespace CandidatosSistema.Controllers
         }
 
 
+        public ActionResult Reportear()
+        {
+            return View();
+
+        }
+
+
 
 
         // Este es el metodo para la consulta

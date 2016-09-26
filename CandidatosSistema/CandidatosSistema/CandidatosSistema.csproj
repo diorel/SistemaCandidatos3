@@ -269,6 +269,20 @@
       <DependentUpon>ReporteCadidatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Filtro\Reporte.aspx.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Filtro\Reporte.aspx.designer.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ReporteCandidatos.aspx.cs">
+      <DependentUpon>ReporteCandidatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\ReporteCandidatos.aspx.designer.cs">
+      <DependentUpon>ReporteCandidatos.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -365,6 +379,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Filtro\Reporte.aspx" />
+    <Content Include="Views\Shared\ReporteCandidatos.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -442,6 +458,7 @@
     <Content Include="Views\Capturista\Index.cshtml" />
     <Content Include="Views\Capturista\FiltroCandidato.cshtml" />
     <Content Include="Views\Capturista\Busquedafilter.cshtml" />
+    <Content Include="Views\Capturista\Reportear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
