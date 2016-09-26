@@ -14,10 +14,10 @@
     <form id="form1" runat="server">
     <div>
         <asp:ScriptManager runat="server"></asp:ScriptManager>
-        <h1>hesto es un reporte</h1>
+ 
         <p>&nbsp;</p>
 
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%"></rsweb:ReportViewer>
   
        
       <%--  <rsweb:ReportViewer ID="ReportViewer1" runat="server"  Font-Names="Verdana"  Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ProcessingMode="Remote" Width="100%">
