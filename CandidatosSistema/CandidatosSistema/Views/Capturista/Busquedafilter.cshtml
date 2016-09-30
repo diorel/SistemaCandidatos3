@@ -12,7 +12,7 @@
         <h4>
             Candidato Nombres: @Html.TextBox("Nombre")<br />
             <input type="submit" value="Busqueda" />
-            localidad: @Html.DropDownList("LocalidadId", String.Empty)
+            Estado: @Html.DropDownList("LocalidadId", String.Empty)
             Sueldo: @Html.DropDownList("SueldoId", String.Empty) 
             Escolaridad:  @Html.DropDownList("EscolaridadId", String.Empty)
             Especialidad : @Html.DropDownList("EspecialidadId", String.Empty)
@@ -43,10 +43,10 @@
             @Html.DisplayNameFor(model => model.Archivo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Escolaridad.Clave)
+            Educacion
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localidad.Clave)
+            Estado
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sueldo.Clave)
