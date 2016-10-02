@@ -205,6 +205,7 @@
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoFiltroController.cs" />
     <Compile Include="Controllers\CapturistaController.cs" />
+    <Compile Include="Controllers\CerrarSesionController.cs" />
     <Compile Include="Controllers\FiltroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
@@ -443,6 +444,7 @@
     <Content Include="Views\Capturista\FiltroCandidato.cshtml" />
     <Content Include="Views\Capturista\Busquedafilter.cshtml" />
     <Content Include="Views\Capturista\ReporteRender.cshtml" />
+    <Content Include="Views\CerrarSesion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
