@@ -13,7 +13,7 @@
         <table>
             <tr>
                 <td><h4>Nombre:</h4></td>
-                <td>  @Html.TextBox("Nombre", null, new { @class = "form-control" })   </td>
+                <td> @Html.TextBox("Nombre", null, new { @class = "form-control" })   </td>
                 <td><h4> Localidad:</h4></td>
                 <td>@Html.DropDownList("LocalidadId", String.Empty) </td>
                 <td><h4>Salario:</h4></td>
@@ -29,6 +29,8 @@
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Busqueda
                     </button>
                 </td>
+
+
              </tr> 
         </table>
     }
@@ -94,8 +96,9 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CandidatoId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CandidatoId }) |
+               
+                @Html.ActionLink("E" ,  "Edit", new { id = item.CandidatoId  }, new { @class = "btn btn-success" })
+                @Html.ActionLink("V", "Details", new { id = item.CandidatoId  }, new { @class = "btn btn-warning" }) 
             </td>
         </tr>
     }
