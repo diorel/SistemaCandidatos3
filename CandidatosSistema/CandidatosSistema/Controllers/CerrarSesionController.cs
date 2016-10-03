@@ -15,8 +15,15 @@ namespace CandidatosSistema.Controllers
             Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
 
+     
+            
+           // return RedirectToAction("Home","Login" );
+           // return View("Home", "Login");
 
             return View();
+
+            // return PartialView("_Layout");
+
         }
     }
 }

@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+ 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,16 +21,29 @@
                 </button>
                 @Html.ActionLink("App Candidatos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Reclutador", "Busquedafilter", "Capturista"  )</li>
-                    <li>@Html.ActionLink("Administrador", "Busquedafilter", "Filtro")</li>
+                    <li>@Html.ActionLink("Reclutador", "Busquedafilter", "Capturista")</li>
+
+
+                    <li>                        
+                        @if (@Session["LogedUserFullname"].ToString() == "Raul Diorelyon Cortes Amador" || @Session["LogedUserFullname"].ToString() == "Administrador")
+                        {
+                            @Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador" })
+                        }
+
+                       else
+                       {
+                          @Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador", @style = "display:none" })
+                       }
+                    </li>
                     <li>@Html.ActionLink("Reporte", "ReporteRender", "Capturista")</li>
                     <li>@Html.ActionLink("Salir", "Index", "CerrarSesion")</li>
-                    <li>                  
+                    <li>
                     </li>
                 </ul>
+
 
                 @*<h5>  Bienbenido - @Session["LogedUserFullname"].ToString() </h5>*@ 
              
@@ -44,6 +59,19 @@
             <p>&copy; @DateTime.Now.Year - Agentia SA. de CV.  </p>
         </footer>
     </div>
+
+
+
+    <script type="text/javascript">
+
+     function ocultar()
+     {
+        
+         @Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador", @style = "display:none" })
+         
+     }
+    </script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
