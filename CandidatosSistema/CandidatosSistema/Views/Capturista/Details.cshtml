@@ -134,6 +134,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CandidatoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.CandidatoId }) |*@
+    <a href="@Url.Action("Busquedafilter")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>

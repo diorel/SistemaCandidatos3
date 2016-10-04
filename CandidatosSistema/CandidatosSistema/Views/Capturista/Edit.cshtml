@@ -9,7 +9,13 @@
 <h2>Editar estatus Candidato</h2>
 
 <div>
-    @Html.ActionLink("Back to List", "Busquedafilter")
+
+    @*<a href="@Url.Action("Busquedafilter")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
+
+
+
+    @Html.ActionLink("Back to List", "Busquedafilter")*@
 </div>
 
 @using (Html.BeginForm())
@@ -18,6 +24,10 @@
     
     <div class="form-horizontal">
         <h4>Candidato</h4>
+
+
+        <a href="@Url.Action("Busquedafilter")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CandidatoId)
@@ -38,7 +48,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+
+                <button type="submit" value="Save" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Guardar
+                </button>
+
+
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
             </div>
         </div>
 
