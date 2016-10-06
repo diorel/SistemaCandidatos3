@@ -6,16 +6,19 @@
 }
 
 
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
-<h2>ALTAcon filtro </h2>
 
-@using (Html.BeginForm("Create", "Filtro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<center> <h2 style="font-family: 'Fredoka One', cursive; color:#0c6b37;">ALTA DE NUEVO CANDIDATO&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2> </center>
+@using (Html.BeginForm("Create", "Capturista", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Candidato administador </h4>
+        <h4 style="font-family: 'Roboto Condensed', sans-serif;">Administrador</h4>
         <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -24,7 +27,6 @@
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -40,8 +42,10 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.LocalidadId, "LocalidadId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocalidadId, "Entidad:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("LocalidadId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.LocalidadId, "", new { @class = "text-danger" })
@@ -57,20 +61,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SueldoId, "SueldoId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("SueldoId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SueldoId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.EspecialidadId, "EspecialidadId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EspecialidadId, "Especialidad:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("EspecialidadId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EspecialidadId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group" style="display:none">
             @Html.LabelFor(model => model.EstadoCandidato, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -79,31 +85,37 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.SueldoId, "EstatusId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EstatusId", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
-                @Html.ValidationMessageFor(model => model.SueldoId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EscolaridadId, "EscolaridadId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EscolaridadId, "Educación:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("EscolaridadId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EscolaridadId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SueldoId, "Salario:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+                @Html.DropDownList("SueldoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SueldoId, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @****************************@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstatusId, "Estatus:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("SueldoId", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("EstatusId", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.EstatusId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @****************************@
+
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Capturista, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -120,7 +132,6 @@
                 @Html.ValidationMessageFor(model => model.FechaCaptura, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.ComentarioEstatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -128,7 +139,6 @@
                 @Html.ValidationMessageFor(model => model.ComentarioEstatus, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Archivo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -136,16 +146,22 @@
                 @Html.ValidationMessageFor(model => model.Archivo, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="Create" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar
+                </button>
+
+                @*<input type="submit" value="Create" class="btn btn-default" />*@
             </div>
         </div>
     </div>
+
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Busquedafilter")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
+    @*@Html.ActionLink("Back to List", "Index")*@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
