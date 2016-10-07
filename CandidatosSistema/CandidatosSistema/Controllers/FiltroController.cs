@@ -105,8 +105,7 @@ namespace CandidatosSistema.Controllers
 
 
 
-
-        // GET: Candidato/Edit/5
+        // GET: Capturista/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,14 +118,12 @@ namespace CandidatosSistema.Controllers
                 return HttpNotFound();
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             return View(candidato);
         }
-
-
-
 
 
 
