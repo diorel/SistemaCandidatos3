@@ -103,6 +103,9 @@ namespace CandidatosSistema.Controllers
             return View(candidato);
         }
 
+
+
+
         // GET: Candidato/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -122,41 +125,32 @@ namespace CandidatosSistema.Controllers
             return View(candidato);
         }
 
+
+
+
+
+
         // POST: Candidato/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(
-            [Bind(Include = "CandidatoId,Nombre,Telefono,Correo,LocalidadId,SueldoId,EscolaridadId,EspecialidadId,EstadoCandidato,Capturista,FechaCaptura,Archivo")] Candidato candidato,
-            HttpPostedFileBase NuevoArchivo)
+        public ActionResult Edit([Bind(Include = "CandidatoId,Nombre,Telefono,Correo,LocalidadId,SueldoId,EscolaridadId,EspecialidadId,EstadoCandidato,Capturista,FechaCaptura,Archivo,Municipio_colonia,EstatusId,ComentarioEstatus,Area")] Candidato candidato)
         {
             if (ModelState.IsValid)
             {
-                if (NuevoArchivo != null && NuevoArchivo.ContentLength > 0)  //en esta parte validamos que existe un archivo y que su tamaño del archivo tiene que set mayor  a 0
-                {
-                    var fileName = Guid.NewGuid().ToString();
-                    fileName += Path.GetExtension(NuevoArchivo.FileName);
-
-                    var route = Server.MapPath(Properties.Settings.Default.CarpetaArchivos);
-
-                    route = Path.Combine(route, fileName);
-
-                    NuevoArchivo.SaveAs(route);
-                    candidato.Archivo = fileName;
-                }
-
-                db.Candidato.Attach(candidato);
-                db.Entry<Candidato>(candidato).State = EntityState.Modified;
+                db.Entry(candidato).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Busquedafilter");
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             return View(candidato);
         }
+
 
         // GET: Candidato/Delete/5
         public ActionResult Delete(int? id)
