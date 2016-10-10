@@ -26,13 +26,14 @@ namespace CandidatosSistema.Models
         [Required(ErrorMessage = "El Correo es Requerido")]
         [Display(Name = "Email:", Description = "xxxxx")]
         public string Correo { get; set; }
-        [Required(ErrorMessage = "Es campo es requerido")]
+        [Required(ErrorMessage = "Elija una Entidad")]
         [Display(Name = "Estado", Description = "xxxxx")]
         public Nullable<int> LocalidadId { get; set; }
-        [Required(ErrorMessage = "Elija una Provincia")]
-
+        [Required(ErrorMessage = "Elija un Salario")]
         public Nullable<int> SueldoId { get; set; }
+        [Required(ErrorMessage = "Elija un garado de Estudios")]
         public Nullable<int> EscolaridadId { get; set; }
+        [Required(ErrorMessage = "Elija una especialidad")]
         public Nullable<int> EspecialidadId { get; set; }
         public Nullable<bool> EstadoCandidato { get; set; }
         [Display(Name = "Capturista:", Description = "xxxxx")]
