@@ -20,6 +20,7 @@ namespace CandidatosSistema.Models
         [Display(Name = "Nombre:", Description = "xxxxx")]
         public string Nombre { get; set; }
         [Required(ErrorMessage = "El Telefono es Requerido")]
+        [Range(0, 999999999999999999, ErrorMessage = "La edad debe estar entre los 12 y los 50 años")]
         [Display(Name = "Telefono:", Description = "xxxxx")]
         public string Telefono { get; set; }
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail no es valido")]

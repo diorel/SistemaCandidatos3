@@ -89,8 +89,16 @@ namespace CandidatosSistema.Controllers
 
                 var Nombre = candidato.Nombre;
 
-                candidato.Nombre = Nombre.ToUpper();
+                var Municipio = candidato.Municipio_colonia;
 
+                var SubEsp = candidato.Area;
+
+                var Capturistas = candidato.Capturista;
+
+                candidato.Nombre = Nombre.ToUpper();
+                candidato.Municipio_colonia = Municipio.ToUpper();
+                candidato.Area = SubEsp.ToUpper();
+                candidato.Capturista = Capturistas.ToUpper();
                 candidato.EstadoCandidato = true;
                 candidato.EstatusId = 1 ;
                 candidato.Capturista = NombreCapturista;
