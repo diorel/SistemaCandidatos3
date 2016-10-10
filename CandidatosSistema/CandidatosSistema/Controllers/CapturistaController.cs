@@ -87,6 +87,10 @@ namespace CandidatosSistema.Controllers
 
                 var NombreCapturista = @Session["LogedUserFullname"].ToString();
 
+                var Nombre = candidato.Nombre;
+
+                candidato.Nombre = Nombre.ToUpper();
+
                 candidato.EstadoCandidato = true;
                 candidato.EstatusId = 1 ;
                 candidato.Capturista = NombreCapturista;
