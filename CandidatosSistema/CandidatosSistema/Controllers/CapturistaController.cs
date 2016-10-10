@@ -85,8 +85,13 @@ namespace CandidatosSistema.Controllers
                     candidato.Archivo = fileName;
                 }
 
+                var NombreCapturista = @Session["LogedUserFullname"].ToString();
+
                 candidato.EstadoCandidato = true;
                 candidato.EstatusId = 1 ;
+                candidato.Capturista = NombreCapturista;
+                candidato.FechaCaptura = DateTime.Today;
+                
 
                 db.Candidato.Add(candidato);
                 db.SaveChanges();
@@ -94,10 +99,10 @@ namespace CandidatosSistema.Controllers
             }
 
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
-            ViewBag.LocalidadId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             return View(candidato);
         }
 

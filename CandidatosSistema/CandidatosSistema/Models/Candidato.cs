@@ -29,6 +29,8 @@ namespace CandidatosSistema.Models
         [Required(ErrorMessage = "Es campo es requerido")]
         [Display(Name = "Estado", Description = "xxxxx")]
         public Nullable<int> LocalidadId { get; set; }
+        [Required(ErrorMessage = "Elija una Provincia")]
+
         public Nullable<int> SueldoId { get; set; }
         public Nullable<int> EscolaridadId { get; set; }
         public Nullable<int> EspecialidadId { get; set; }
@@ -38,6 +40,7 @@ namespace CandidatosSistema.Models
         [Display(Name = "Fecha de Captura:", Description = "xxxxx")]
         public Nullable<System.DateTime> FechaCaptura { get; set; }
         [Display(Name = "CV:", Description = "xxxxx")]
+        [Required(ErrorMessage = "selecione un archivo")]
         public string Archivo { get; set; }
         [Required(ErrorMessage = "Es requerido este dato")]
         [Display(Name = "Delegacion/Municipio", Description = "xxxxx")]
