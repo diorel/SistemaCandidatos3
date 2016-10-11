@@ -292,6 +292,7 @@
     <Content Include="img\header.jpg" />
     <Content Include="img\header2.jpg" />
     <Content Include="img\LogoAgentia.png" />
+    <Content Include="img\LogoInicio.jpg" />
     <Content Include="img\logoSatisfaccion.png" />
     <Content Include="Models\CandidatoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
