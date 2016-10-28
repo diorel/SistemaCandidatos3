@@ -22,7 +22,7 @@
        
       <%--  <rsweb:ReportViewer ID="ReportViewer1" runat="server"  Font-Names="Verdana"  Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ProcessingMode="Remote" Width="100%">
         </rsweb:ReportViewer>--%>
-        <%--<ServerReport ReportPath="/ReportesRys/ReporteCandidatosActivo" ReportServerUrl="http://user-pc/ReportServer_DESAROLLO/" />--%>
+        <%--<ServerReport ReportPath="/ReportesRys/ReporteCandidatosActivo" ReportServerUrl="http://servertalent:80/ReportServer" />--%>
     </div>
     </form>
 </body>

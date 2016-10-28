@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Candidato">
       <EntityTypeMapping TypeName="SisCandidatosModel.Candidato">
         <MappingFragment StoreEntitySet="Candidato">
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
           <ScalarProperty Name="Area" ColumnName="Area" />
           <ScalarProperty Name="ComentarioEstatus" ColumnName="ComentarioEstatus" />
           <ScalarProperty Name="EstatusId" ColumnName="EstatusId" />
@@ -59,6 +60,7 @@
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="SisCandidatosModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
@@ -87,6 +89,17 @@
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Clave" ColumnName="Clave" />
           <ScalarProperty Name="EstatusId" ColumnName="EstatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="SisCandidatosModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

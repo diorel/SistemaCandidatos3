@@ -20,6 +20,17 @@
     <Property Name="EstatusId" Type="int" />
     <Property Name="ComentarioEstatus" Type="varchar" MaxLength="350" />
     <Property Name="Area" Type="varchar" MaxLength="150" />
+    <Property Name="EmpresaId" Type="int" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="EmpresaId" />
+    </Key>
+    <Property Name="EmpresaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="FechaCaptura" Type="date" />
   </EntityType>
   <EntityType Name="Escolaridad">
     <Key>
@@ -46,8 +57,8 @@
       <PropertyRef Name="EstatusId" />
     </Key>
     <Property Name="EstatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="80" Nullable="false" />
     <Property Name="Estado" Type="bit" />
     <Property Name="FechaCaptura" Type="date" />
   </EntityType>
@@ -56,8 +67,8 @@
       <PropertyRef Name="LocalidadId" />
     </Key>
     <Property Name="LocalidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Estado" Type="bit" />
     <Property Name="FechaCaptura" Type="date" />
   </EntityType>
@@ -66,22 +77,37 @@
       <PropertyRef Name="SueldoId" />
     </Key>
     <Property Name="SueldoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Estado" Type="bit" />
     <Property Name="FechaCaptura" Type="date" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="UsuarioId" />
     </Key>
     <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="150" />
-    <Property Name="Usuario" Type="varchar" MaxLength="15" />
-    <Property Name="Clave" Type="varchar" MaxLength="15" />
+    <Property Name="Usuario" Type="varchar" MaxLength="150" />
+    <Property Name="Clave" Type="varchar" MaxLength="150" />
+    <Property Name="Puesto" Type="varchar" MaxLength="150" />
     <Property Name="FechaAlta" Type="date" />
     <Property Name="Estado" Type="bit" />
   </EntityType>
+  <Association Name="FK_Candidato_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Candidato_Escolaridad">
     <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="0..1" />
     <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
@@ -144,12 +170,27 @@
   </Association>
   <EntityContainer Name="SisCandidatosModelStoreContainer">
     <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Localidad" EntityType="Self.Localidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sueldo" EntityType="Self.Sueldo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Usuario].[UsuarioId] AS [UsuarioId], 
+    [Usuario].[Nombre] AS [Nombre], 
+    [Usuario].[Usuario] AS [Usuario], 
+    [Usuario].[Clave] AS [Clave], 
+    [Usuario].[Puesto] AS [Puesto], 
+    [Usuario].[FechaAlta] AS [FechaAlta], 
+    [Usuario].[Estado] AS [Estado]
+    FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Candidato_Empresa" Association="Self.FK_Candidato_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
     <AssociationSet Name="FK_Candidato_Escolaridad" Association="Self.FK_Candidato_Escolaridad">
       <End Role="Escolaridad" EntitySet="Escolaridad" />
       <End Role="Candidato" EntitySet="Candidato" />

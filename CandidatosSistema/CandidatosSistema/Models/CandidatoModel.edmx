@@ -25,6 +25,17 @@
           <Property Name="EstatusId" Type="int" />
           <Property Name="ComentarioEstatus" Type="varchar" MaxLength="350" />
           <Property Name="Area" Type="varchar" MaxLength="150" />
+          <Property Name="EmpresaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCaptura" Type="date" />
         </EntityType>
         <EntityType Name="Escolaridad">
           <Key>
@@ -51,8 +62,8 @@
             <PropertyRef Name="EstatusId" />
           </Key>
           <Property Name="EstatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
         </EntityType>
@@ -61,8 +72,8 @@
             <PropertyRef Name="LocalidadId" />
           </Key>
           <Property Name="LocalidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
         </EntityType>
@@ -71,22 +82,37 @@
             <PropertyRef Name="SueldoId" />
           </Key>
           <Property Name="SueldoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Clave" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="UsuarioId" />
           </Key>
           <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="150" />
-          <Property Name="Usuario" Type="varchar" MaxLength="15" />
-          <Property Name="Clave" Type="varchar" MaxLength="15" />
+          <Property Name="Usuario" Type="varchar" MaxLength="150" />
+          <Property Name="Clave" Type="varchar" MaxLength="150" />
+          <Property Name="Puesto" Type="varchar" MaxLength="150" />
           <Property Name="FechaAlta" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
+        <Association Name="FK_Candidato_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Candidato_Escolaridad">
           <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="0..1" />
           <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
@@ -149,12 +175,27 @@
         </Association>
         <EntityContainer Name="SisCandidatosModelStoreContainer">
           <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Localidad" EntityType="Self.Localidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sueldo" EntityType="Self.Sueldo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Usuario].[UsuarioId] AS [UsuarioId], 
+    [Usuario].[Nombre] AS [Nombre], 
+    [Usuario].[Usuario] AS [Usuario], 
+    [Usuario].[Clave] AS [Clave], 
+    [Usuario].[Puesto] AS [Puesto], 
+    [Usuario].[FechaAlta] AS [FechaAlta], 
+    [Usuario].[Estado] AS [Estado]
+    FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Candidato_Empresa" Association="Self.FK_Candidato_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
           <AssociationSet Name="FK_Candidato_Escolaridad" Association="Self.FK_Candidato_Escolaridad">
             <End Role="Escolaridad" EntitySet="Escolaridad" />
             <End Role="Candidato" EntitySet="Candidato" />
@@ -205,6 +246,8 @@
           <Property Name="ComentarioEstatus" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Estatus" Relationship="SisCandidatosModel.FK_Candidato_Estatus" FromRole="Candidato" ToRole="Estatus" />
           <Property Name="Area" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Candidato" ToRole="Empresa" />
         </EntityType>
         <EntityType Name="Escolaridad">
           <Key>
@@ -222,8 +265,8 @@
             <PropertyRef Name="LocalidadId" />
           </Key>
           <Property Name="LocalidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Localidad" FromRole="Localidad" ToRole="Candidato" />
@@ -233,8 +276,8 @@
             <PropertyRef Name="SueldoId" />
           </Key>
           <Property Name="SueldoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Sueldo" FromRole="Sueldo" ToRole="Candidato" />
@@ -245,10 +288,11 @@
           </Key>
           <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Usuario1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Clave" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Puesto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Candidato_Escolaridad">
           <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="0..1" />
@@ -314,6 +358,11 @@
             <End Role="Estatus" EntitySet="Estatus" />
             <End Role="Candidato" EntitySet="Candidato" />
           </AssociationSet>
+          <EntitySet Name="Empresa" EntityType="SisCandidatosModel.Empresa" />
+          <AssociationSet Name="FK_Candidato_Empresa" Association="SisCandidatosModel.FK_Candidato_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Especialidad">
           <Key>
@@ -343,8 +392,8 @@
             <PropertyRef Name="EstatusId" />
           </Key>
           <Property Name="EstatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Clave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Estatus" FromRole="Estatus" ToRole="Candidato" />
@@ -361,6 +410,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
+        </EntityType>
+        <Association Name="FK_Candidato_Empresa">
+          <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,6 +442,7 @@
           <EntitySetMapping Name="Candidato">
             <EntityTypeMapping TypeName="SisCandidatosModel.Candidato">
               <MappingFragment StoreEntitySet="Candidato">
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
                 <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="ComentarioEstatus" ColumnName="ComentarioEstatus" />
                 <ScalarProperty Name="EstatusId" ColumnName="EstatusId" />
@@ -425,6 +498,7 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="SisCandidatosModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
@@ -453,6 +527,17 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="EstatusId" ColumnName="EstatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="SisCandidatosModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

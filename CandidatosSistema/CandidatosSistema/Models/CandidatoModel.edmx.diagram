@@ -4,19 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d025995ea7174aa4b1609a3c6af09ad6" Name="Diagram1">
+      <Diagram DiagramId="d025995ea7174aa4b1609a3c6af09ad6" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="SisCandidatosModel.Candidato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SisCandidatosModel.Escolaridad" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SisCandidatosModel.Localidad" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SisCandidatosModel.Sueldo" Width="1.5" PointX="6.375" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisCandidatosModel.Localidad" Width="1.5" PointX="5.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisCandidatosModel.Sueldo" Width="1.5" PointX="7.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="SisCandidatosModel.Usuario" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Escolaridad" ManuallyRouted="false" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Localidad" ManuallyRouted="false" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Sueldo" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SisCandidatosModel.Especialidad" Width="1.5" PointX="0.625" PointY="4.375" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Especialidad" />
-        <EntityTypeShape EntityType="SisCandidatosModel.Estatus" Width="1.5" PointX="3.875" PointY="6.375" />
+        <EntityTypeShape EntityType="SisCandidatosModel.Estatus" Width="1.5" PointX="7.5" PointY="5.625" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Estatus" />
+        <EntityTypeShape EntityType="SisCandidatosModel.Empresa" Width="1.5" PointX="0.625" PointY="6.75" />
+        <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Empresa" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

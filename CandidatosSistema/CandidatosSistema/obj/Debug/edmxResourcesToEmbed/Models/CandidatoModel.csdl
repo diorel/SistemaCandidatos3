@@ -25,6 +25,8 @@
     <Property Name="ComentarioEstatus" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Estatus" Relationship="SisCandidatosModel.FK_Candidato_Estatus" FromRole="Candidato" ToRole="Estatus" />
     <Property Name="Area" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpresaId" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Candidato" ToRole="Empresa" />
   </EntityType>
   <EntityType Name="Escolaridad">
     <Key>
@@ -42,8 +44,8 @@
       <PropertyRef Name="LocalidadId" />
     </Key>
     <Property Name="LocalidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Estado" Type="Boolean" />
     <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Localidad" FromRole="Localidad" ToRole="Candidato" />
@@ -53,8 +55,8 @@
       <PropertyRef Name="SueldoId" />
     </Key>
     <Property Name="SueldoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Estado" Type="Boolean" />
     <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Sueldo" FromRole="Sueldo" ToRole="Candidato" />
@@ -65,10 +67,11 @@
     </Key>
     <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="Usuario1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Clave" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="FechaAlta" Type="DateTime" Precision="0" />
     <Property Name="Estado" Type="Boolean" />
+    <Property Name="Puesto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Candidato_Escolaridad">
     <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="0..1" />
@@ -134,6 +137,11 @@
       <End Role="Estatus" EntitySet="Estatus" />
       <End Role="Candidato" EntitySet="Candidato" />
     </AssociationSet>
+    <EntitySet Name="Empresa" EntityType="SisCandidatosModel.Empresa" />
+    <AssociationSet Name="FK_Candidato_Empresa" Association="SisCandidatosModel.FK_Candidato_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Especialidad">
     <Key>
@@ -163,8 +171,8 @@
       <PropertyRef Name="EstatusId" />
     </Key>
     <Property Name="EstatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Clave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
     <Property Name="Estado" Type="Boolean" />
     <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Estatus" FromRole="Estatus" ToRole="Candidato" />
@@ -178,6 +186,29 @@
       </Principal>
       <Dependent Role="Candidato">
         <PropertyRef Name="EstatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="EmpresaId" />
+    </Key>
+    <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
+  </EntityType>
+  <Association Name="FK_Candidato_Empresa">
+    <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="EmpresaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

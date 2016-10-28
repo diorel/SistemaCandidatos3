@@ -38,7 +38,7 @@
                   
 
                     <li>                        
-                        @if (@Session["LogedUserFullname"].ToString() == "Raul Diorelyon Cortes Amador" || @Session["LogedUserFullname"].ToString() == "Administrador")
+                        @if (@Session["LogedUserFullname"].ToString() == "Raul Diorelyon Cortes Amador" || @Session["LogedUserFullname"].ToString() == "Administrador"|| @Session["LogedUserFullname"].ToString() == "Cesar Alejandro Gomez Gutierrez"|| @Session["LogedUserFullname"].ToString() == "Claudia alejandra Escalante Flores")
                         {
 
                              <a href="@Url.Action("Busquedafilter", "Filtro")"> Supervisor  <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a>
@@ -53,8 +53,8 @@
                           @*@Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador", @style = "display:none" })*@
                        }
                     </li>
-                    <li> <a href="@Url.Action("ReporteRender", "Capturista")">Reporte <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> </li>
-                    <li> <a href="@Url.Action("Index", "CerrarSesion")">Salir <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a> </li>
+                    <li> <a style="display:none" href="@Url.Action("ReporteRender", "Capturista")">Reporte <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> </li>
+                    <li> <a href="@Url.Action("Login", "Home")">Salir <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a> </li>
                     <li>
                     </li>
                 </ul>
@@ -70,14 +70,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <h4> Vercion 1.0.0.0</h4>
+            <h4> Version 1.0.0.0</h4>
             <p>&copy; @DateTime.Now.Year - Agentia SA. de CV.  </p>
         </footer>
     </div>
 
 
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
 
      function ocultar()
      {
@@ -85,7 +85,7 @@
          @Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador", @style = "display:none" })
          
      }
-    </script>
+    </script>*@
 
 
     @Scripts.Render("~/bundles/jquery")

@@ -202,6 +202,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Candidato3Controller.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoFiltroController.cs" />
     <Compile Include="Controllers\CapturistaController.cs" />
@@ -234,6 +235,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CandidatoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empresa.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Escolaridad.cs">
       <DependentUpon>CandidatoModel.tt</DependentUpon>
@@ -367,7 +371,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -446,6 +452,11 @@
     <Content Include="Views\Capturista\Busquedafilter.cshtml" />
     <Content Include="Views\Capturista\ReporteRender.cshtml" />
     <Content Include="Views\CerrarSesion\Index.cshtml" />
+    <Content Include="Views\Candidato3\Create.cshtml" />
+    <Content Include="Views\Candidato3\Delete.cshtml" />
+    <Content Include="Views\Candidato3\Details.cshtml" />
+    <Content Include="Views\Candidato3\Edit.cshtml" />
+    <Content Include="Views\Candidato3\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

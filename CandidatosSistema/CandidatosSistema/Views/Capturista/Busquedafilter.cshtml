@@ -33,6 +33,10 @@
             <tr>
                 <td><h4> Categoría:</h4></td>
                 <td>@Html.DropDownList("EspecialidadId", String.Empty)</td>
+                <td><h4> Estatus:</h4></td>
+                <td>@Html.DropDownList("EstatusId", String.Empty)</td>
+                <td><h4> Empresa</h4></td>
+                <td>@Html.DropDownList("EmpresaId", String.Empty)</td>
                <td></td>
                 <td>
                     <button  type="submit" value="Busqueda" class="btn btn-success">
@@ -53,7 +57,7 @@
         <th>
             Telefono
         </th>
-       
+
         <th>
             Educacion
         </th>
@@ -61,7 +65,7 @@
             Localidad
         </th>
         <th>
-            Salario 
+            Salario
         </th>
         <th>
             Categoría
@@ -70,8 +74,16 @@
             Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Archivo)
+          CV
         </th>
+        <th>
+            Estatus
+        </th>
+
+        <th>
+            Empresa
+        </th>
+
         <th></th>
     </tr>
     @foreach (var item in Model)
@@ -105,6 +117,14 @@
                     <a href=@string.Format("{0}/{1}", ViewBag.CarpetaArchivos, item.Archivo) target="_blank">Ver archvo adjunto</a>
                 }
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus.Clave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa.Clave)
+            </td>
+
+
             <td>
                
 
