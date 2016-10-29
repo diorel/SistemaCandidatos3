@@ -19,7 +19,7 @@ namespace CandidatosSistema.Controllers
         // GET: Candidato
         public ActionResult Index()
         {
-            var candidato = db.Candidato.Include(c => c.Escolaridad).Include(c => c.Especialidad).Include(c => c.Localidad).Include(c => c.Sueldo);
+            var candidato = db.Candidato.Include(c => c.Escolaridad).Include(c => c.Localidad).Include(c => c.Sueldo).Include(c => c.Especialidad).Include(c => c.Estatus).Include(c => c.Empresa);
             ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
             return View(candidato.ToList());
         }
@@ -48,17 +48,25 @@ namespace CandidatosSistema.Controllers
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
             ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave");
+            ViewBag.EmpresaId = new SelectList(db.Empresa, "EmpresaId", "Clave");
 
             ViewBag.Title = "Index";
             ViewBag.Nombre = @Session["LogedUserFullname"].ToString();
-            ViewBag.Fecha = Convert.ToString(DateTime.Today);
+
+            //DateTime dt = DateTime.Now; // Or whatever
+            //string s = dt.ToString("ddMMyyyy");
+
+            //ViewBag.Fecha = Convert.ToString(s);
+
+            ViewBag.FechaCaptura = Convert.ToString(DateTime.Today);
             ViewBag.Estado = true;
 
 
 
+
+            //ViewBag.Capturista = "" 
             return View();
         }
-
 
 
         // POST: Candidato/Create
@@ -66,9 +74,7 @@ namespace CandidatosSistema.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(
-            [Bind(Include = "CandisatoId,Nombre,Telefono,Correo,LocalidadId,Municipio_colonia,SueldoId,EscolaridadId,EspecialidadId,Area,EstadoCandidato,Capturista,FechaCaptura,EstatusId,ComentarioEstatus,Archivo")] Candidato candidato,
-            HttpPostedFileBase Archivo)
+        public ActionResult Create([Bind(Include = "CandidatoId,Nombre,Telefono,Correo,LocalidadId,SueldoId,EscolaridadId,EspecialidadId,EstadoCandidato,Capturista,FechaCaptura,Archivo,Municipio_colonia,EstatusId,ComentarioEstatus,Area,EmpresaId")] Candidato candidato, HttpPostedFileBase Archivo)
         {
             if (ModelState.IsValid)
             {
@@ -86,8 +92,6 @@ namespace CandidatosSistema.Controllers
                     candidato.Archivo = fileName;
                 }
 
-
-
                 var NombreCapturista = @Session["LogedUserFullname"].ToString();
 
                 var Nombre = candidato.Nombre;
@@ -101,11 +105,12 @@ namespace CandidatosSistema.Controllers
                 candidato.Nombre = Nombre.ToUpper();
                 candidato.Municipio_colonia = Municipio.ToUpper();
                 candidato.Area = SubEsp.ToUpper();
-                candidato.Capturista = Capturistas.ToUpper();
+                // candidato.Capturista = Capturistas.ToUpper();
                 candidato.EstadoCandidato = true;
                 candidato.EstatusId = 1;
                 candidato.Capturista = NombreCapturista;
                 candidato.FechaCaptura = DateTime.Today;
+
 
 
                 db.Candidato.Add(candidato);
@@ -114,14 +119,13 @@ namespace CandidatosSistema.Controllers
             }
 
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
-            ViewBag.LocalidadId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
+            ViewBag.EmpresaId = new SelectList(db.Empresa, "EmpresaId", "Clave", candidato.EmpresaId);
             return View(candidato);
         }
-
-
 
 
         // GET: Candidato/Edit/5
@@ -137,15 +141,13 @@ namespace CandidatosSistema.Controllers
                 return HttpNotFound();
             }
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave", candidato.EscolaridadId);
-            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave", candidato.EspecialidadId);
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave", candidato.LocalidadId);
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
+            ViewBag.EmpresaId = new SelectList(db.Empresa, "EmpresaId", "Clave", candidato.EmpresaId);
             return View(candidato);
         }
-
-
-
-
 
 
         // POST: Candidato/Edit/5
@@ -153,7 +155,7 @@ namespace CandidatosSistema.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CandidatoId,Nombre,Telefono,Correo,LocalidadId,SueldoId,EscolaridadId,EspecialidadId,EstadoCandidato,Capturista,FechaCaptura,Archivo,Municipio_colonia,EstatusId,ComentarioEstatus,Area")] Candidato candidato)
+        public ActionResult Edit([Bind(Include = "CandidatoId,Nombre,Telefono,Correo,LocalidadId,SueldoId,EscolaridadId,EspecialidadId,EstadoCandidato,Capturista,FechaCaptura,Archivo,Municipio_colonia,EstatusId,ComentarioEstatus,Area,EmpresaId")] Candidato candidato)
         {
             if (ModelState.IsValid)
             {
@@ -166,6 +168,7 @@ namespace CandidatosSistema.Controllers
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave", candidato.SueldoId);
             ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Descripcion", candidato.EspecialidadId);
             ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave", candidato.EstatusId);
+            ViewBag.EmpresaId = new SelectList(db.Empresa, "EmpresaId", "Clave", candidato.EmpresaId);
             return View(candidato);
         }
 
@@ -201,12 +204,14 @@ namespace CandidatosSistema.Controllers
 
         // Este es el metodo para la consulta
 
-        public ActionResult Busquedafilter(string Nombre, string LocalidadId, string SueldoId, string EscolaridadId, string EspecialidadId)
+        public ActionResult Busquedafilter(string Nombre, string LocalidadId, string SueldoId, string EscolaridadId, string EspecialidadId, string EstatusId, string EmpresaId)
         {
             ViewBag.LocalidadId = new SelectList(db.Localidad, "LocalidadId", "Clave");
             ViewBag.SueldoId = new SelectList(db.Sueldo, "SueldoId", "Clave");
             ViewBag.EscolaridadId = new SelectList(db.Escolaridad, "EscolaridadId", "Clave");
             ViewBag.EspecialidadId = new SelectList(db.Especialidad, "EspecialidadId", "Clave");
+            ViewBag.EstatusId = new SelectList(db.Estatus, "EstatusId", "Clave");
+            ViewBag.EmpresaId = new SelectList(db.Empresa, "EmpresaId", "Clave");
 
             var Candidato = from s in db.Candidato select s;
 
@@ -235,6 +240,16 @@ namespace CandidatosSistema.Controllers
                 int ec = Convert.ToInt32(EspecialidadId);
                 return View(Candidato.Where(x => x.EspecialidadId == ec));
             }
+            if (!string.IsNullOrEmpty(EstatusId))
+            {
+                int et = Convert.ToInt32(EstatusId);
+                return View(Candidato.Where(x => x.EstatusId == et));
+            }
+            if (!string.IsNullOrEmpty(EmpresaId))
+            {
+                int em = Convert.ToInt32(EmpresaId);
+                return View(Candidato.Where(x => x.EmpresaId == em));
+            }
 
             else
             {
@@ -242,6 +257,8 @@ namespace CandidatosSistema.Controllers
                 return View(Candidato);
             }
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
