@@ -250,7 +250,6 @@ namespace CandidatosSistema.Controllers
                 int em = Convert.ToInt32(EmpresaId);
                 return View(Candidato.Where(x => x.EmpresaId == em));
             }
-
             else
             {
                 ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
