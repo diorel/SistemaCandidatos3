@@ -18,6 +18,15 @@ using System;
 public partial class Candidato
 {
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Candidato()
+    {
+
+        this.AsignacionVacante = new HashSet<AsignacionVacante>();
+
+    }
+
+
     public int CandidatoId { get; set; }
 
     public string Nombre { get; set; }
@@ -65,6 +74,10 @@ public partial class Candidato
     public virtual Estatus Estatus { get; set; }
 
     public virtual Empresa Empresa { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<AsignacionVacante> AsignacionVacante { get; set; }
 
 }
 

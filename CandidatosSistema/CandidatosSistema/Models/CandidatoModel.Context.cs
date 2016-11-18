@@ -17,6 +17,9 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
+using System.Data.Entity.Core.Objects;
+using System.Linq;
+
 
 public partial class SisCandidatosEntities : DbContext
 {
@@ -47,6 +50,25 @@ public partial class SisCandidatosEntities : DbContext
     public virtual DbSet<Estatus> Estatus { get; set; }
 
     public virtual DbSet<Empresa> Empresa { get; set; }
+
+    public virtual DbSet<Vacante> Vacante { get; set; }
+
+    public virtual DbSet<VacanteArea> VacanteArea { get; set; }
+
+    public virtual DbSet<VacanteEstatus> VacanteEstatus { get; set; }
+
+    public virtual DbSet<VacanteLocalidad> VacanteLocalidad { get; set; }
+
+    public virtual DbSet<VacanteSueldo> VacanteSueldo { get; set; }
+
+    public virtual DbSet<AsignacionVacante> AsignacionVacante { get; set; }
+
+
+    public virtual ObjectResult<usp_Candidatos_Region_Result> usp_Candidatos_Region()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_Candidatos_Region_Result>("usp_Candidatos_Region");
+    }
 
 }
 

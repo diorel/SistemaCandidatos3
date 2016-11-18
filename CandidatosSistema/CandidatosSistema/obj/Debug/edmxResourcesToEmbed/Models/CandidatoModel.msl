@@ -103,5 +103,84 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Vacante">
+      <EntityTypeMapping TypeName="SisCandidatosModel.Vacante">
+        <MappingFragment StoreEntitySet="Vacante">
+          <ScalarProperty Name="CometarioVacante" ColumnName="CometarioVacante" />
+          <ScalarProperty Name="VacanteEstatusId" ColumnName="VacanteEstatusId" />
+          <ScalarProperty Name="DescripcionVacante" ColumnName="DescripcionVacante" />
+          <ScalarProperty Name="VacanteSueldoId" ColumnName="VacanteSueldoId" />
+          <ScalarProperty Name="Delegacion_Municipio" ColumnName="Delegacion_Municipio" />
+          <ScalarProperty Name="VacanteLocalidadId" ColumnName="VacanteLocalidadId" />
+          <ScalarProperty Name="VacanteAreaId" ColumnName="VacanteAreaId" />
+          <ScalarProperty Name="VacanteFecha" ColumnName="VacanteFecha" />
+          <ScalarProperty Name="VacanteTitulo" ColumnName="VacanteTitulo" />
+          <ScalarProperty Name="VacanteId" ColumnName="VacanteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacanteArea">
+      <EntityTypeMapping TypeName="SisCandidatosModel.VacanteArea">
+        <MappingFragment StoreEntitySet="VacanteArea">
+          <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="VacanteAreaId" ColumnName="VacanteAreaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacanteEstatus">
+      <EntityTypeMapping TypeName="SisCandidatosModel.VacanteEstatus">
+        <MappingFragment StoreEntitySet="VacanteEstatus">
+          <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="VacanteEstatusId" ColumnName="VacanteEstatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacanteLocalidad">
+      <EntityTypeMapping TypeName="SisCandidatosModel.VacanteLocalidad">
+        <MappingFragment StoreEntitySet="VacanteLocalidad">
+          <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="VacanteLocalidadId" ColumnName="VacanteLocalidadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacanteSueldo">
+      <EntityTypeMapping TypeName="SisCandidatosModel.VacanteSueldo">
+        <MappingFragment StoreEntitySet="VacanteSueldo">
+          <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="VacanteSueldoId" ColumnName="VacanteSueldoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Candidatos_Region" FunctionName="SisCandidatosModel.Store.usp_Candidatos_Region">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SisCandidatosModel.usp_Candidatos_Region_Result">
+          <ScalarProperty Name="NumeroCandidatos" ColumnName="NumeroCandidatos" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AsignacionVacante">
+      <EntityTypeMapping TypeName="SisCandidatosModel.AsignacionVacante">
+        <MappingFragment StoreEntitySet="AsignacionVacante">
+          <ScalarProperty Name="AsignacionFecha" ColumnName="AsignacionFecha" />
+          <ScalarProperty Name="AsignacionEstatus" ColumnName="AsignacionEstatus" />
+          <ScalarProperty Name="VacanteId" ColumnName="VacanteId" />
+          <ScalarProperty Name="CandidatoId" ColumnName="CandidatoId" />
+          <ScalarProperty Name="AsignacionVacanteId" ColumnName="AsignacionVacanteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -342,6 +342,7 @@ C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSi
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\CandidatosSistema.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\CandidatosSistema.pdb
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Antlr3.Runtime.dll
+C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\DotNet.Highcharts.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\EntityFramework.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\EntityFramework.SqlServer.dll
 C:\Users\User\Documents\GitHub\SistemaCandidatos3\CandidatosSistema\CandidatosSistema\bin\Microsoft.AI.Agent.Intercept.dll

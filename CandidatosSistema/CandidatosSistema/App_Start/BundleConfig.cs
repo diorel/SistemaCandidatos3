@@ -26,6 +26,12 @@ namespace CandidatosSistema
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            //Highchart bundle 
+            bundles.Add(new ScriptBundle("~/bundles/highchart").Include(
+                     "~/Scripts/Highcharts-3.0.1/js/highcharts.js"
+                        ));
+
+
         }
     }
 }
