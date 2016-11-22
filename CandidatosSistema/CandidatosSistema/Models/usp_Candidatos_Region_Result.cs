@@ -17,9 +17,11 @@ using System;
 public partial class usp_Candidatos_Region_Result
 {
 
-    public Nullable<int> NumeroCandidatos { get; set; }
+        public int NumeroCandidatos { get; set; }
+        public string Region { get; set; }
 
-    public string Region { get; set; }
+   
+
 
 }
 

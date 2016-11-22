@@ -214,6 +214,7 @@
     <Compile Include="Controllers\ChartSampleController.cs" />
     <Compile Include="Controllers\FiltroController.cs" />
     <Compile Include="Controllers\GaficaConsultaController.cs" />
+    <Compile Include="Controllers\GraficaCandidatosRegionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -519,6 +520,7 @@
     <Content Include="Views\Candidato3\Edit.cshtml" />
     <Content Include="Views\Candidato3\Index.cshtml" />
     <Content Include="Views\ChartSample\Index.cshtml" />
+    <Content Include="Views\GraficaCandidatosRegion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
