@@ -215,6 +215,11 @@
     <Compile Include="Controllers\FiltroController.cs" />
     <Compile Include="Controllers\GaficaConsultaController.cs" />
     <Compile Include="Controllers\GraficaCandidatosRegionController.cs" />
+    <Compile Include="Controllers\GraficaEmpresaController.cs" />
+    <Compile Include="Controllers\GraficaEstatusController.cs" />
+    <Compile Include="Controllers\GraficaEstudiosController.cs" />
+    <Compile Include="Controllers\GraficaProfesionController.cs" />
+    <Compile Include="Controllers\GraficaSueldoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -521,6 +526,11 @@
     <Content Include="Views\Candidato3\Index.cshtml" />
     <Content Include="Views\ChartSample\Index.cshtml" />
     <Content Include="Views\GraficaCandidatosRegion\Index.cshtml" />
+    <Content Include="Views\GraficaEstatus\Index.cshtml" />
+    <Content Include="Views\GraficaSueldo\Index.cshtml" />
+    <Content Include="Views\GraficaEmpresa\Index.cshtml" />
+    <Content Include="Views\GraficaEstudios\Index.cshtml" />
+    <Content Include="Views\GraficaProfesion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

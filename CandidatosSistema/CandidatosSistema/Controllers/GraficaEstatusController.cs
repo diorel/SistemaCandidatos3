@@ -11,66 +11,29 @@ using System.Web.Mvc;
 
 namespace CandidatosSistema.Controllers
 {
-    public class GraficaCandidatosRegionController : Controller
+    public class GraficaEstatusController : Controller
     {
-        // GET: GraficaCandidatosRegion
+        // GET: GraficaEstatus
         public ActionResult Index()
         {
-            //create a collection of data
-            //var transactionCounts = new List<TransactionCount> {
-            //               new TransactionCount(){  MonthName="January", Count=30},
-            //               new TransactionCount(){  MonthName="February", Count=40},
-            //               new TransactionCount(){  MonthName="March", Count=4},
-            //               new TransactionCount(){  MonthName="April", Count=35}
-            //                };
-
+ 
 
             using (var bd = new SisCandidatosEntities())
             {
-               // var data = bd.usp_Candidatos_Region();
+                // var data = bd.usp_Candidatos_Region();
 
                 // esta llamada hace los mismo pero sin usar un sp
                 // osea que es una consulta con LINQ y ya hciciste un join y agrupaste los datos. verdad? ok de hecho era lo que nesesitaba aun que todoavia no entiendo por que utilizaste el Usin y las llaves 
 
+                var data3 = bd.Candidato.ToLookup(x => x.Sueldo).Select(x => new { TipoEstatus = x.Key.Descripcion, NumeroCadidatos = x.Count() }).ToList();
 
-
-                var data2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() });
-
-                var data3 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() }).ToList();
-
-                var transactionCounts = bd.usp_Candidatos_Region();
-
-
-
-
-                var xDataMonths = data3.Select(i => i.Region).ToArray();
-                var yDataCounts = data3.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
-
-
-                //  var yDataCounts2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { NumeroCandidatos = x.Count() });
-
-                //var xDataRegiones = data3.Select(i => i.Region).ToArray();
-                //var xDataRegionesX = data3.Select(i => i.NumeroCandidatos).ToArray();
-                //var yDataCandidatos2 =  data3.Select(i => i.NumeroCandidatos).ToArray();
-             //  var yDataCandidatos = transactionCounts.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
-             
-             //   var yDataCandidatos3 = new object[] { yDataCandidatos2 }.ToArray();
-
-                //  var consult2 = transactionCounts.Select(x => x.NumeroCandidatos).ToArray();
-
-                //var yDataCounts = transactionCounts.Select(x => new object[] { x.Region }).ToArray();
-                //var yDataCounts = transactionCounts.Select(i => i.NumeroCandidatos).ToArray();
-
-                //var yDataCounts = transactionCounts.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
-
-                //modify data type to make it of array type
-                //var xDataMonths = transactionCounts.Select(i => i.MonthName).ToArray();
-                //var yDataCounts = transactionCounts.Select(i => new object[] { i.Count }).ToArray();
+                var xDataMonths = data3.Select(i => i.TipoEstatus).ToArray();
+                var yDataCounts = data3.Select(i => new object[] { i.NumeroCadidatos }).ToArray();
 
                 //instanciate an object of the Highcharts type
                 var chart = new Highcharts("chart")
                         //define the type of chart 
-                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Pie })
                         //overall Title of the chart 
                         .SetTitle(new Title { Text = "Incoming Transacions per hour" })
                         //small label below the main Title
@@ -104,7 +67,7 @@ namespace CandidatosSistema.Controllers
                             // new Series { Name = "Other Name", Data = new Data(OtherData) }
                     });
 
-            return View(chart);
+                return View(chart);
 
             }
         }
