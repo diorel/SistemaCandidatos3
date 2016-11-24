@@ -34,11 +34,11 @@ namespace CandidatosSistema.Controllers
 
 
 
-                var data2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() });
+                //var data2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() });
 
                 var data3 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() }).ToList();
 
-                var transactionCounts = bd.usp_Candidatos_Region();
+                //var transactionCounts = bd.usp_Candidatos_Region();
 
 
 

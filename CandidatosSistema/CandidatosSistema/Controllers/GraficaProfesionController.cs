@@ -18,8 +18,8 @@ namespace CandidatosSistema.Controllers
         {
             using (var bd = new SisCandidatosEntities())
             {
-                var data3 = bd.Candidato.ToLookup(x => x.Escolaridad).Select(x => new { Area = x.Key.Descripcion, NumeroCandidatos = x.Count() }).ToList();
-
+                var data3 = bd.Candidato.ToLookup(x => x.Especialidad).Select(x => new { Area = x.Key.Descripcion, NumeroCandidatos = x.Count() }).ToList();
+                
 
                 var xDataMonths = data3.Select(i => i.Area).ToArray();
                 var yDataCounts = data3.Select(i => new object[] { i.NumeroCandidatos }).ToArray();

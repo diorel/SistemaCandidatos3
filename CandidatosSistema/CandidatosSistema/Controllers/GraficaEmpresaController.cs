@@ -18,17 +18,31 @@ namespace CandidatosSistema.Controllers
         {
             using (var bd = new SisCandidatosEntities())
             {
-                var data3 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { NombreEmpresa = x.Key.Descripcion, NumeroCandidatos = x.Count() }).ToList();
 
 
-                var xDataMonths = data3.Select(i => i.NombreEmpresa).ToArray();
-                var yDataCounts = data3.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
+
+                //var data4 = from A in bd.Candidato
+                //            group A.Empresa by new
+                //            {
+                //                A.Empresa.Descripcion
+                //            } into g
+                //            select new { NumeroCandidatos = g.Count(), NombreEmpresa = g.Key.Descripcion };
+
+                //List<Candidato> listado = new data4.ToList();
+
+
+                var data4 = bd.Candidato.ToLookup(x => x.EmpresaId).Where(x => x.FirstOrDefault() != null && x.First().Empresa != null).Select(x => new { NombreEmpresa = x.First().Empresa.Descripcion, NumeroCandidatos = x.Count() }).ToList();
+
+
+                var xDataMonths = data4.Where(x => x != null).Select(i => i.NombreEmpresa).ToArray();
+                var yDataCounts = data4.Select(i => new object[] { i.NumeroCandidatos}).ToArray();
+              
 
 
                 //instanciate an object of the Highcharts type
                 var chart = new Highcharts("chart")
                         //define the type of chart 
-                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
                         //overall Title of the chart 
                         .SetTitle(new Title { Text = "Incoming Transacions per hour" })
                         //small label below the main Title
