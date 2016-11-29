@@ -32,7 +32,7 @@ namespace CandidatosSistema.Controllers
                 // esta llamada hace los mismo pero sin usar un sp
                 // osea que es una consulta con LINQ y ya hciciste un join y agrupaste los datos. verdad? ok de hecho era lo que nesesitaba aun que todoavia no entiendo por que utilizaste el Usin y las llaves 
 
-
+               
 
                 //var data2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { Region = x.Key.Descripcion, NumeroCandidatos = x.Count() });
 
@@ -42,9 +42,15 @@ namespace CandidatosSistema.Controllers
 
 
 
+                var consultacadidatos = bd.Candidato.ToLookup(x => x.CandidatoId).Select(x => new { NoCandidatos = x.Count() }).ToList();
+
+                string CandidatosActivos = Convert.ToString(consultacadidatos.Count);
+
 
                 var xDataMonths = data3.Select(i => i.Region).ToArray();
                 var yDataCounts = data3.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
+
+
 
 
                 //  var yDataCounts2 = bd.Candidato.ToLookup(x => x.Localidad).Select(x => new { NumeroCandidatos = x.Count() });

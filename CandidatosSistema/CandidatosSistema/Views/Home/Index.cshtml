@@ -1,4 +1,10 @@
-﻿@{
+﻿
+@model CandidatosSistema.Models.Candidato
+
+@*@model IEnumerable<CandidatosSistema.Models.Candidato>*@
+
+
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -18,8 +24,6 @@
     }
 
 </style>
-
-
 @*<img src="~/img/LogoInicio.jpg" style="max-width: 100%;" />*@
 <header style="max-width: 100%;">
   
@@ -36,6 +40,8 @@
     <br />
     <br />  
     <br />
+    <br />
+    <br />
     <div id="red">
              <p><a href="~/Documents/manualBolsaTrabajo.docx" class="btn btn-warning btn-lg"> Descargar Manual &raquo;</a></p>
     </div>
@@ -45,12 +51,20 @@
     <br />
     <br />
     <br />
+     <div style="color:orange; font-size:medium;  " >
+
+         <h4>Numero de cadidatos Activos:   @ViewBag.Message</h4>
+         
+         <h4>Numero de candidtos Contratados:  @ViewBag.Saludo</h4>
+    
+     </div>
+
     <br />
     <br />
     <img style="height: 70px; padding-left: 5%;" src="/img/image002.png"> 
     <br />
     <br />
-    <br />
+    <br />,
     <br />
 </header>
 

@@ -3,23 +3,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CandidatosSistema.Models;
 
 namespace CandidatosSistema.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            if (Session["LogedUserID"] != null)
+
+        public static string CandidatosActivos() 
             {
 
+            SisCandidatosEntities bd = new SisCandidatosEntities();
+            var consultacadidatos = bd.Candidato.ToLookup(x => x.CandidatoId).Select(x => new { NoCandidatos = x.Count() }).ToList();
+            string  NOCandidatosActivos = Convert.ToString(consultacadidatos.Count);
+      
+            return (NOCandidatosActivos);
+            }
+
+        SisCandidatosEntities bd = new SisCandidatosEntities();
+       
+      
+
+        public ActionResult Index()
+        {
+
+            using (var bd = new SisCandidatosEntities())
+            {
+                var consultacadidatos = bd.Candidato.ToLookup(x => x.CandidatoId).Select(x => new { NoCandidatos = x.Count() }).ToList();
+                string CandidatosActivos = Convert.ToString(consultacadidatos.Count);
+
+
+                ViewBag.Message = CandidatosActivos;
+                ViewBag.Saludo = "3";
+
+
+            }
+
+
+
+            if (Session["LogedUserID"] != null)
+            {
                 return View();
             }
             else
             {
+                using (var bd = new SisCandidatosEntities())
+                {
+                    var consultacadidatos = bd.Candidato.ToLookup(x => x.CandidatoId).Select(x => new { NoCandidatos = x.Count() }).ToList();
+                    string CandidatosActivos = Convert.ToString(consultacadidatos.Count);
+
+
+                    ViewBag.Message = CandidatosActivos;
+                    ViewBag.Saludo = "Hola Mundo";
+
+
+                }
+
+    
+
                 return RedirectToAction("AfterLogin");
             }
 
+
+       
 
         }
 

@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CandidatosSistema.Models;
 
+
 namespace CandidatosSistema.Controllers
 {
     [Authorize]

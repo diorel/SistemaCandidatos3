@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNet.Identity
+﻿
+
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -24,5 +26,14 @@ else
             <div style="color:white;">¡Bienvenido! - @Session["LogedUserFullname"].ToString() </div> 
             }
         </li>
+       
+        <li>
+
+            @*Candidatos Activos:*@       
+            @*var consultacadidatos = bd.Candidato.ToLookup(x => x.CandidatoId).Select(x => new { NoCandidatos = x.Count() }).ToList();
+
+            string CandidatosActivos = Convert.ToString(consultacadidatos.Count);*@
+
+      
     </ul>
 }

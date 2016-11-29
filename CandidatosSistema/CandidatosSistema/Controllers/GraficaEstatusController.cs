@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Activities;
 
 namespace CandidatosSistema.Controllers
 {
@@ -25,15 +26,25 @@ namespace CandidatosSistema.Controllers
                 // esta llamada hace los mismo pero sin usar un sp
                 // osea que es una consulta con LINQ y ya hciciste un join y agrupaste los datos. verdad? ok de hecho era lo que nesesitaba aun que todoavia no entiendo por que utilizaste el Usin y las llaves 
 
-                var data3 = bd.Candidato.ToLookup(x => x.Sueldo).Select(x => new { TipoEstatus = x.Key.Descripcion, NumeroCadidatos = x.Count() }).ToList();
+                //var data3 = bd.Candidato.ToLookup(x => x.Sueldo).Select(x => new { TipoEstatus = x.Key.Descripcion, NumeroCadidatos = x.Count() }).ToList();
 
-                var xDataMonths = data3.Select(i => i.TipoEstatus).ToArray();
-                var yDataCounts = data3.Select(i => new object[] { i.NumeroCadidatos }).ToArray();
+                //var xDataMonths = data3.Select(i => i.TipoEstatus).ToArray();
+                //var yDataCounts = data3.Select(i => new object[] { i.NumeroCadidatos }).ToArray();
+
+
+
+                var data4 = bd.Candidato.ToLookup(x => x.EstatusId).Where(x => x.FirstOrDefault() != null && x.First().Estatus != null).Select(x => new { EstatusCandidatos = x.First().Estatus.Descripcion, NumeroCandidatos = x.Count() }).ToList();
+
+
+                var xDataMonths = data4.Where(x => x != null).Select(i => i.EstatusCandidatos).ToArray();
+                var yDataCounts = data4.Select(i => new object[] { i.NumeroCandidatos }).ToArray();
+
+
 
                 //instanciate an object of the Highcharts type
                 var chart = new Highcharts("chart")
                         //define the type of chart 
-                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Pie })
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
                         //overall Title of the chart 
                         .SetTitle(new Title { Text = "Incoming Transacions per hour" })
                         //small label below the main Title
@@ -45,7 +56,8 @@ namespace CandidatosSistema.Controllers
                         .SetTooltip(new Tooltip
                         {
                             Enabled = true,
-                            Formatter = @"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y; }"
+                            Formatter = @"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y; }",
+                            
                         })
                         .SetPlotOptions(new PlotOptions
                         {
@@ -53,11 +65,16 @@ namespace CandidatosSistema.Controllers
                             {
                                 DataLabels = new PlotOptionsLineDataLabels
                                 {
-                                    Enabled = true
+                                    Enabled = true,
+                                    Formatter = "function() {  return customFormatPointName(this.point.name) + ' : ' + this.y; }",
+                             
+
                                 },
                                 EnableMouseTracking = false
                             }
-                        })
+                        }
+                      
+                        )
                         //load the Y values 
                         .SetSeries(new[]
                     {
