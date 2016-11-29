@@ -28,7 +28,7 @@ namespace CandidatosSistema.Controllers
                 //instanciate an object of the Highcharts type
                 var chart = new Highcharts("chart")
                         //define the type of chart 
-                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
                         //overall Title of the chart 
                         .SetTitle(new Title { Text = "Incoming Transacions per hour" })
                         //small label below the main Title
