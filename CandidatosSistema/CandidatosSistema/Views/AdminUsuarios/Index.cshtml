@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CandidatosSistema.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center> <h2 style="font-family: 'Fredoka One', cursive; color:#0c6b37;">Administrador de Usuarios&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h2> </center>
+
+@*<h2>Administrador de Usuarios</h2>*@
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Crear nuevo Usuario <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+
+    @*@Html.ActionLink("Crear nuevo Usuario", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puesto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puesto)
+        </td>
+        <td>
+            @*@Html.ActionLink("Editar Usuario", "Edit", new { id = item.UsuarioId })*@
+
+            <a href="@Url.Action("Edit" , new { id = item.UsuarioId  }  )" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Editar</span></a>
+            
+            @*@Html.ActionLink("Details", "Details", new { id=item.UsuarioId }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.UsuarioId })*@
+        </td>
+    </tr>
+}
+
+</table>

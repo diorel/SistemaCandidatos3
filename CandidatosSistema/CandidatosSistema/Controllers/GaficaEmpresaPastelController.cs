@@ -56,17 +56,17 @@ namespace CandidatosSistema.Controllers
                 var chart = new Highcharts("chart")
                         //define the type of chart 
                         .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
-                        //overall Title of the chart 
-                        .SetTitle(new Title { Text = "Grafica de colores por empresa" })
+                       //overall Title of the chart 
+                       .SetTitle(new Title { Text = "Grafica numero de Candidatos Por Empresa" })
                         //small label below the main Title
-                        .SetSubtitle(new Subtitle { Text = "Numpero de candidatos por emprpesa" })
-                        .SetCredits(new Credits { Text = "Programer By Raul Diorelyon Cortes Amador" })
+                        .SetSubtitle(new Subtitle { Text = "Numero de candidatos por emprpesa" })
+                        .SetCredits(new Credits { Text = "Programer By RDCA" })
                         // en esta parte insetare los formatos de la Grafica con .SetPlotOptions
 
 
                         //load the X values
                         //.SetXAxis(new XAxis { Categories = "Empresas" })
-                      
+
                         //set the Y title
                         .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Numero de candidatos" } })
                         .SetTooltip(new Tooltip

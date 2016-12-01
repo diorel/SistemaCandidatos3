@@ -207,6 +207,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\Candidato3Controller.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoFiltroController.cs" />
@@ -534,6 +535,11 @@
     <Content Include="Views\GraficaEstudios\Index.cshtml" />
     <Content Include="Views\GraficaProfesion\Index.cshtml" />
     <Content Include="Views\GaficaEmpresaPastel\Index.cshtml" />
+    <Content Include="Views\AdminUsuarios\Create.cshtml" />
+    <Content Include="Views\AdminUsuarios\Delete.cshtml" />
+    <Content Include="Views\AdminUsuarios\Details.cshtml" />
+    <Content Include="Views\AdminUsuarios\Edit.cshtml" />
+    <Content Include="Views\AdminUsuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

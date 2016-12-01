@@ -45,14 +45,15 @@ namespace CandidatosSistema.Controllers
                 var chart = new Highcharts("chart")
                         //define the type of chart 
                         .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
-                        //overall Title of the chart 
-                        .SetTitle(new Title { Text = "Incoming Transacions per hour" })
-                        //small label below the main Title
-                        .SetSubtitle(new Subtitle { Text = "Accounting" })
-                        //load the X values
+                         //overall Title of the chart 
+                         .SetTitle(new Title { Text = "Grafica numero de Candidatos Por Estatus" })
+                      //small label below the main Title
+                      .SetSubtitle(new Subtitle { Text = "Agantia" })
+                         //load the X values
+                        .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Numero de Candidatos" } })
                         .SetXAxis(new XAxis { Categories = xDataMonths })
-                        //set the Y title
-                        .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Nummerod de candidatos" } })
+                      //set the Y title
+                      .SetCredits(new Credits { Text = "Programer By RDCA" })
                         .SetTooltip(new Tooltip
                         {
                             Enabled = true,

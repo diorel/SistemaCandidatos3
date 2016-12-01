@@ -42,12 +42,12 @@ namespace CandidatosSistema.Controllers
                 //instanciate an object of the Highcharts type
                 var chart = new Highcharts("chart")
                         //define the type of chart 
-                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })                            
-                        //overall Title of the chart 
-                        .SetTitle(new Title { Text = "Incoming Transacions per hour" })
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Bar })
+                          //overall Title of the chart 
+                          .SetTitle(new Title { Text = "Grafica numero de Candidatos Por Empresa" })
                         //small label below the main Title
-                        .SetSubtitle(new Subtitle { Text = "Accounting" })
-                        .SetCredits(new Credits { Text = "Programer By Raul Diorelyon Cortes Amador" })
+                        .SetSubtitle(new Subtitle { Text = "Agantia" })
+                        .SetCredits(new Credits { Text = "Programer By RDCA" })
                         // en esta parte insetare los formatos de la Grafica con .SetPlotOptions
 
                         .SetPlotOptions(new PlotOptions {Pie = new PlotOptionsPie { AllowPointSelect = true, Cursor = Cursors.Pointer, DataLabels = new PlotOptionsPieDataLabels { Formatter = "function() { return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %'; }" },

@@ -34,13 +34,14 @@ namespace CandidatosSistema.Controllers
                         //define the type of chart 
                         .InitChart(new Chart { DefaultSeriesType = ChartTypes.Column })
                         //overall Title of the chart 
-                        .SetTitle(new Title { Text = "Incoming Transacions per hour" })
+                        .SetTitle(new Title { Text = "Grafica por Salario" })
                         //small label below the main Title
-                        .SetSubtitle(new Subtitle { Text = "Accounting" })
+                       .SetSubtitle(new Subtitle { Text = "Agantia" })
                         //load the X values
                         .SetXAxis(new XAxis { Categories = xDataMonths })
-                        //set the Y title
-                        .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Nummerod de candidatos" } })
+                          //set the Y title
+                         .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Numero de Candidatos" } })
+                         .SetCredits(new Credits { Text = "Programer By RDCA" })
                         .SetTooltip(new Tooltip
                         {
                             Enabled = true,
