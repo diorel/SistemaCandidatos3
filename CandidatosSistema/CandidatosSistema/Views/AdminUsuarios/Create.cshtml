@@ -67,12 +67,17 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="Save" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Guardar
+                </button>
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
+    @*@Html.ActionLink("Back to List", "Index")*@
 </div>

@@ -174,6 +174,10 @@
       <End Role="Vacante" EntitySet="Vacante" />
       <End Role="AsignacionVacante" EntitySet="AsignacionVacante" />
     </AssociationSet>
+    <AssociationSet Name="FK_Vacante_Empresa" Association="SisCandidatosModel.FK_Vacante_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Vacante" EntitySet="Vacante" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Especialidad">
     <Key>
@@ -231,6 +235,7 @@
     <Property Name="Estado" Type="Boolean" />
     <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
+    <NavigationProperty Name="Vacante" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Empresa" ToRole="Vacante" />
   </EntityType>
   <Association Name="FK_Candidato_Empresa">
     <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -263,6 +268,9 @@
     <NavigationProperty Name="VacanteLocalidad" Relationship="SisCandidatosModel.FK_Vacante_VacanteLocalidad" FromRole="Vacante" ToRole="VacanteLocalidad" />
     <NavigationProperty Name="VacanteSueldo" Relationship="SisCandidatosModel.FK_Vacante_VacanteSueldo" FromRole="Vacante" ToRole="VacanteSueldo" />
     <NavigationProperty Name="AsignacionVacante" Relationship="SisCandidatosModel.FK_AsignacionVacante_Vacante" FromRole="Vacante" ToRole="AsignacionVacante" />
+    <Property Name="EmpresaId" Type="Int32" />
+    <Property Name="RepresentanteEmpresa" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Vacante" ToRole="Empresa" />
   </EntityType>
   <EntityType Name="VacanteArea">
     <Key>
@@ -393,6 +401,18 @@
       </Principal>
       <Dependent Role="AsignacionVacante">
         <PropertyRef Name="VacanteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vacante_Empresa">
+    <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Vacante" Role="Vacante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Vacante">
+        <PropertyRef Name="EmpresaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -14,8 +14,9 @@ namespace CandidatosSistema.Models
 
 using System;
     using System.Collections.Generic;
-    
-public partial class Sueldo
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Sueldo
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

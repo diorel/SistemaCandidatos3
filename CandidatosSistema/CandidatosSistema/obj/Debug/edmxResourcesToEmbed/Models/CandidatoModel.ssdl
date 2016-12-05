@@ -120,6 +120,8 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
     <Property Name="DescripcionVacante" Type="varchar" MaxLength="450" Nullable="false" />
     <Property Name="VacanteEstatusId" Type="int" />
     <Property Name="CometarioVacante" Type="varchar" MaxLength="140" Nullable="false" />
+    <Property Name="EmpresaId" Type="int" />
+    <Property Name="RepresentanteEmpresa" Type="varchar" MaxLength="70" Nullable="false" />
   </EntityType>
   <EntityType Name="VacanteArea">
     <Key>
@@ -257,6 +259,18 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Vacante_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Vacante" Type="Self.Vacante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Vacante">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Vacante_VacanteArea">
     <End Role="VacanteArea" Type="Self.VacanteArea" Multiplicity="0..1" />
     <End Role="Vacante" Type="Self.Vacante" Multiplicity="*" />
@@ -305,7 +319,6 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="usp_Candidatos_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="SisCandidatosModelStoreContainer">
     <EntitySet Name="AsignacionVacante" EntityType="Self.AsignacionVacante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
@@ -362,6 +375,10 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
     <AssociationSet Name="FK_Candidato_Sueldo" Association="Self.FK_Candidato_Sueldo">
       <End Role="Sueldo" EntitySet="Sueldo" />
       <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vacante_Empresa" Association="Self.FK_Vacante_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Vacante" EntitySet="Vacante" />
     </AssociationSet>
     <AssociationSet Name="FK_Vacante_VacanteArea" Association="Self.FK_Vacante_VacanteArea">
       <End Role="VacanteArea" EntitySet="VacanteArea" />

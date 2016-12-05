@@ -1,0 +1,137 @@
+﻿@model IEnumerable<CandidatosSistema.Models.Vacante>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+<center> <h2 style="font-family: 'Fredoka One', cursive; color:#0c6b37;">Vacantes&nbsp;<span class="glyphicon glyphicon-bell" aria-hidden="true"></span> </h2> </center>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create")" class="btn btn-success">Nueva Vacante <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+
+    @using (Html.BeginForm("Index", "Vacantes", FormMethod.Get))
+    {
+        ////1) nombre del metodo 2) nombre del controller
+        <table>
+            <tr>
+                <td><h4> Localidad:</h4></td>
+                <td>@Html.DropDownList("VacanteLocalidadId", String.Empty) </td>
+                <td><h4>Salario:</h4></td>
+                <td>@Html.DropDownList("VacanteSueldoId", String.Empty)</td>
+                <td><h4>Area:</h4></td>
+                <td>@Html.DropDownList("VacanteAreaId", String.Empty)</td>
+                <td><h4>Empresa:</h4></td>
+                <td>@Html.DropDownList("EmpresaId", String.Empty)</td>
+            <tr>
+                @*<td><h4> Categoría:</h4></td>
+                <td>@Html.DropDownList("EspecialidadId", String.Empty)</td>
+                <td><h4> Estatus:</h4></td>
+                <td>@Html.DropDownList("EstatusId", String.Empty)</td>
+                <td><h4> Empresa</h4></td>
+                <td>@Html.DropDownList("EmpresaId", String.Empty)</td>*@
+                <td></td>
+                <td>
+                    <button type="submit" value="Busqueda" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Busqueda
+                    </button>
+                </td>
+            </tr>
+        </table>
+    }
+</p>
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+           Titulo de la Vacante
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VacanteFecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delegacion_Municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionVacante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CometarioVacante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepresentanteEmpresa)
+        </th>
+        <th>
+          Area
+        </th>
+        <th>
+            Estatus
+        </th>
+        <th>
+           Estado
+        </th>
+        <th>
+          Salario
+        </th>
+        <th>
+         Empresa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteTitulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteFecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delegacion_Municipio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionVacante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CometarioVacante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepresentanteEmpresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteArea.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteEstatus.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteLocalidad.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacanteSueldo.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Clave)
+        </td>
+        <td>
+            <a href="@Url.Action("Details" , new { id = item.VacanteId  }  )" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+            <a href="@Url.Action("Edit" , new { id = item.VacanteId  }  )" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.VacanteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VacanteId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VacanteId })*@
+        </td>
+    </tr>
+}
+
+</table>

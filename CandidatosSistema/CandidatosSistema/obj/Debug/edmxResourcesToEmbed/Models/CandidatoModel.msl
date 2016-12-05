@@ -106,6 +106,8 @@
     <EntitySetMapping Name="Vacante">
       <EntityTypeMapping TypeName="SisCandidatosModel.Vacante">
         <MappingFragment StoreEntitySet="Vacante">
+          <ScalarProperty Name="RepresentanteEmpresa" ColumnName="RepresentanteEmpresa" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
           <ScalarProperty Name="CometarioVacante" ColumnName="CometarioVacante" />
           <ScalarProperty Name="VacanteEstatusId" ColumnName="VacanteEstatusId" />
           <ScalarProperty Name="DescripcionVacante" ColumnName="DescripcionVacante" />
@@ -163,14 +165,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="usp_Candidatos_Region" FunctionName="SisCandidatosModel.Store.usp_Candidatos_Region">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SisCandidatosModel.usp_Candidatos_Region_Result">
-          <ScalarProperty Name="NumeroCandidatos" ColumnName="NumeroCandidatos" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="AsignacionVacante">
       <EntityTypeMapping TypeName="SisCandidatosModel.AsignacionVacante">
         <MappingFragment StoreEntitySet="AsignacionVacante">

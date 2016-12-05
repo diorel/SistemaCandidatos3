@@ -40,7 +40,7 @@
                   
 
                     <li>                        
-                        @if (@Session["LogedUserFullname"].ToString() == "Nestor Martin" || @Session["LogedUserFullname"].ToString() == "Administrador"|| @Session["LogedUserFullname"].ToString() == "Cesar Alejandro Gomez Gutierrez"|| @Session["LogedUserFullname"].ToString() == "Claudia alejandra Escalante Flores"|| @Session["LogedUserFullname"].ToString() == "Karen Lizeth Velasco Villalva")
+                        @if (@Session["LogedUserFullname"].ToString() == "Nestor Martin" || @Session["LogedUserFullname"].ToString() == "Administrador"|| @Session["LogedUserFullname"].ToString() == "Cesar Alejandro Gomez Gutierrez"|| @Session["LogedUserFullname"].ToString() == "Claudia alejandra Escalante Flores"|| @Session["LogedUserFullname"].ToString() == "Karen Lizeth Velasco Villalva" || @Session["LogedUserFullname"].ToString() == "Javier Ramirez Reyes" || @Session["LogedUserFullname"].ToString() == "Julio Reyes" || @Session["LogedUserFullname"].ToString() == "SuperUsuario")
                         {
 
                              <a href="@Url.Action("Busquedafilter", "Filtro")"> Supervisor  <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a>
@@ -56,7 +56,8 @@
                        }
                     </li>
                     <li> <a style="display:none" href="@Url.Action("ReporteRender", "Capturista")">Reporte<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> </li>
-                    <li> <a href="@Url.Action("ReporteRender", "Capturista")">Reportes <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> </li>
+                    <li> <a href="@Url.Action("Index", "Vacantes")">Vacantes <span class="glyphicon glyphicon-bell" aria-hidden="true"></span></a> </li>
+                    @*<li> <a href="@Url.Action("ReporteRender", "Capturista")">Reportes <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> </li>*@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Dashboard <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <b class="caret"></b>
@@ -75,7 +76,23 @@
                     </li>
                     @*<li> <a href="@Url.Action("Index", "GraficaEStudios")">Vacantes <span class="glyphicon glyphicon-bell" aria-hidden="true"></span></a> </li>*@
 
-                    <li> <a href="@Url.Action("Index", "AdminUsuarios")">Configuracion <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a> </li>
+
+                    @if (@Session["LogedUserFullname"].ToString() == "Raul Diorelyon Coortes Amador" || @Session["LogedUserFullname"].ToString() == "Administrador" || @Session["LogedUserFullname"].ToString() == "Javier Ramirez Reyes" || @Session["LogedUserFullname"].ToString() == "Julio Reyes" || @Session["LogedUserFullname"].ToString() == "SuperUsuario")
+                    {
+
+                        <li> <a href="@Url.Action("Index", "AdminUsuarios")">Configuracion <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a> </li>
+
+                            @*@Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador" })*@
+                    }
+                    else
+                    {
+                        <li> <a style="display:none"  href="@Url.Action("Index", "AdminUsuarios")">Configuracion <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a> </li>
+
+                            @*@Html.ActionLink("Administrador", "Busquedafilter", "Filtro", new { @Id = "MenuAdministrador", @style = "display:none" })*@
+                    }
+
+
+                  
 
                     <li> <a href="@Url.Action("Login", "Home")">Salir <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a> </li>                          
                 </ul>

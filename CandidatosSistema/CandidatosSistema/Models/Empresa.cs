@@ -24,6 +24,8 @@ public partial class Empresa
 
         this.Candidato = new HashSet<Candidato>();
 
+        this.Vacante = new HashSet<Vacante>();
+
     }
 
 
@@ -42,6 +44,10 @@ public partial class Empresa
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Candidato> Candidato { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Vacante> Vacante { get; set; }
 
 }
 

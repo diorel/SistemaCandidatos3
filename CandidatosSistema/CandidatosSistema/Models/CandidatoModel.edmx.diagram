@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="SisCandidatosModel.Vacante" Width="1.5" PointX="6.875" PointY="9.125" />
         <EntityTypeShape EntityType="SisCandidatosModel.VacanteArea" Width="1.5" PointX="4.25" PointY="12.625" />
         <EntityTypeShape EntityType="SisCandidatosModel.VacanteEstatus" Width="1.5" PointX="9.625" PointY="9.625" />
-        <EntityTypeShape EntityType="SisCandidatosModel.VacanteLocalidad" Width="1.5" PointX="3.875" PointY="9.75" />
+        <EntityTypeShape EntityType="SisCandidatosModel.VacanteLocalidad" Width="1.5" PointX="2.875" PointY="10.125" />
         <EntityTypeShape EntityType="SisCandidatosModel.VacanteSueldo" Width="1.5" PointX="9.5" PointY="12.375" />
         <AssociationConnector Association="SisCandidatosModel.FK_Vacante_VacanteArea" />
         <AssociationConnector Association="SisCandidatosModel.FK_Vacante_VacanteEstatus" />
@@ -31,6 +31,7 @@
         <EntityTypeShape EntityType="SisCandidatosModel.AsignacionVacante" Width="1.5" PointX="5" PointY="7" />
         <AssociationConnector Association="SisCandidatosModel.FK_AsignacionVacante_Candidato" />
         <AssociationConnector Association="SisCandidatosModel.FK_AsignacionVacante_Vacante" />
+        <AssociationConnector Association="SisCandidatosModel.FK_Vacante_Empresa" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

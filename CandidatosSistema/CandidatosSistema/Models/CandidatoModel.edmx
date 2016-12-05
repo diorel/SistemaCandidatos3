@@ -125,6 +125,8 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="DescripcionVacante" Type="varchar" MaxLength="450" Nullable="false" />
           <Property Name="VacanteEstatusId" Type="int" />
           <Property Name="CometarioVacante" Type="varchar" MaxLength="140" Nullable="false" />
+          <Property Name="EmpresaId" Type="int" />
+          <Property Name="RepresentanteEmpresa" Type="varchar" MaxLength="70" Nullable="false" />
         </EntityType>
         <EntityType Name="VacanteArea">
           <Key>
@@ -262,6 +264,18 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vacante_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Vacante" Type="Self.Vacante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Vacante">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vacante_VacanteArea">
           <End Role="VacanteArea" Type="Self.VacanteArea" Multiplicity="0..1" />
           <End Role="Vacante" Type="Self.Vacante" Multiplicity="*" />
@@ -310,7 +324,6 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="usp_Candidatos_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SisCandidatosModelStoreContainer">
           <EntitySet Name="AsignacionVacante" EntityType="Self.AsignacionVacante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
@@ -367,6 +380,10 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <AssociationSet Name="FK_Candidato_Sueldo" Association="Self.FK_Candidato_Sueldo">
             <End Role="Sueldo" EntitySet="Sueldo" />
             <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacante_Empresa" Association="Self.FK_Vacante_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Vacante" EntitySet="Vacante" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacante_VacanteArea" Association="Self.FK_Vacante_VacanteArea">
             <End Role="VacanteArea" EntitySet="VacanteArea" />
@@ -563,6 +580,10 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             <End Role="Vacante" EntitySet="Vacante" />
             <End Role="AsignacionVacante" EntitySet="AsignacionVacante" />
           </AssociationSet>
+          <AssociationSet Name="FK_Vacante_Empresa" Association="SisCandidatosModel.FK_Vacante_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Vacante" EntitySet="Vacante" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Especialidad">
           <Key>
@@ -620,6 +641,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
+          <NavigationProperty Name="Vacante" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Empresa" ToRole="Vacante" />
         </EntityType>
         <Association Name="FK_Candidato_Empresa">
           <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -652,6 +674,9 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <NavigationProperty Name="VacanteLocalidad" Relationship="SisCandidatosModel.FK_Vacante_VacanteLocalidad" FromRole="Vacante" ToRole="VacanteLocalidad" />
           <NavigationProperty Name="VacanteSueldo" Relationship="SisCandidatosModel.FK_Vacante_VacanteSueldo" FromRole="Vacante" ToRole="VacanteSueldo" />
           <NavigationProperty Name="AsignacionVacante" Relationship="SisCandidatosModel.FK_AsignacionVacante_Vacante" FromRole="Vacante" ToRole="AsignacionVacante" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="RepresentanteEmpresa" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Vacante" ToRole="Empresa" />
         </EntityType>
         <EntityType Name="VacanteArea">
           <Key>
@@ -785,6 +810,18 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vacante_Empresa">
+          <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Vacante" Role="Vacante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Vacante">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -896,6 +933,8 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <EntitySetMapping Name="Vacante">
             <EntityTypeMapping TypeName="SisCandidatosModel.Vacante">
               <MappingFragment StoreEntitySet="Vacante">
+                <ScalarProperty Name="RepresentanteEmpresa" ColumnName="RepresentanteEmpresa" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
                 <ScalarProperty Name="CometarioVacante" ColumnName="CometarioVacante" />
                 <ScalarProperty Name="VacanteEstatusId" ColumnName="VacanteEstatusId" />
                 <ScalarProperty Name="DescripcionVacante" ColumnName="DescripcionVacante" />
@@ -953,14 +992,6 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_Candidatos_Region" FunctionName="SisCandidatosModel.Store.usp_Candidatos_Region">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SisCandidatosModel.usp_Candidatos_Region_Result">
-                <ScalarProperty Name="NumeroCandidatos" ColumnName="NumeroCandidatos" />
-                <ScalarProperty Name="Region" ColumnName="Region" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="AsignacionVacante">
             <EntityTypeMapping TypeName="SisCandidatosModel.AsignacionVacante">
               <MappingFragment StoreEntitySet="AsignacionVacante">

@@ -229,6 +229,7 @@
     <Compile Include="Controllers\SueldoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VacantesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -303,13 +304,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\ReporteCadidatos.aspx.cs">
-      <DependentUpon>ReporteCadidatos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes\ReporteCadidatos.aspx.designer.cs">
-      <DependentUpon>ReporteCadidatos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -345,7 +339,6 @@
       <DependentUpon>CandidatoModel.edmx</DependentUpon>
       <LastGenOutput>CandidatoModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Reportes\ReporteCadidatos.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -540,10 +533,16 @@
     <Content Include="Views\AdminUsuarios\Details.cshtml" />
     <Content Include="Views\AdminUsuarios\Edit.cshtml" />
     <Content Include="Views\AdminUsuarios\Index.cshtml" />
+    <Content Include="Views\Vacantes\Create.cshtml" />
+    <Content Include="Views\Vacantes\Delete.cshtml" />
+    <Content Include="Views\Vacantes\Details.cshtml" />
+    <Content Include="Views\Vacantes\Edit.cshtml" />
+    <Content Include="Views\Vacantes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Documents\" />
+    <Folder Include="Reportes\" />
     <Folder Include="Views\GaficaConsulta\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

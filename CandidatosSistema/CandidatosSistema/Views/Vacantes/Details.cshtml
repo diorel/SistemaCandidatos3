@@ -1,0 +1,108 @@
+﻿@model CandidatosSistema.Models.Vacante
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vacante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteTitulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteTitulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteFecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteFecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delegacion_Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delegacion_Municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionVacante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionVacante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CometarioVacante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CometarioVacante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepresentanteEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepresentanteEmpresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteArea.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteArea.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteEstatus.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteEstatus.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteLocalidad.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteLocalidad.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacanteSueldo.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacanteSueldo.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Clave)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-info">Regresar a la lista  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.VacanteId }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>
