@@ -223,31 +223,37 @@ namespace CandidatosSistema.Controllers
             if (!string.IsNullOrEmpty(LocalidadId))
             {
                 int gr = Convert.ToInt32(LocalidadId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.LocalidadId == gr));
             }
             if (!string.IsNullOrEmpty(SueldoId))
             {
                 int sl = Convert.ToInt32(SueldoId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(X => X.SueldoId == sl));
             }
             if (!string.IsNullOrEmpty(EscolaridadId))
             {
                 int es = Convert.ToInt32(EscolaridadId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.EscolaridadId == es));
             }
             if (!string.IsNullOrEmpty(EspecialidadId))
             {
                 int ec = Convert.ToInt32(EspecialidadId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.EspecialidadId == ec));
             }
             if (!string.IsNullOrEmpty(EstatusId))
             {
                 int et = Convert.ToInt32(EstatusId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.EstatusId == et));
             }
             if (!string.IsNullOrEmpty(EmpresaId))
             {
                 int em = Convert.ToInt32(EmpresaId);
+                ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.EmpresaId == em));
             }
             else
