@@ -29,36 +29,60 @@ using System;
 
 
     public int RequisicionId { get; set; }
+
     [Required(ErrorMessage = "El Nombre es requerido")]
     [Display(Name = "Titulo de Requisicion:", Description = "xxxxx")]
-
     public string RequisicionTitulo { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Fecha de Requisicion:", Description = "xxxxx")]
     public Nullable<System.DateTime> RequisicionFecha { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requeridoa")]
+    [Display(Name = "Area de Requisicion:", Description = "xxxxx")]
     public Nullable<int> RequisicionAreaId { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Localidad de Requisicion:", Description = "xxxxx")]
     public Nullable<int> RequisicionLocalidadId { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Delegacion/Municipio de Requisicion:", Description = "xxxxx")]
     public string Delegacion_Municipio { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Sueldo de Requisicion:", Description = "xxxxx")]
     public Nullable<int> RequisicionSueldoId { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Descripcion de Requisicion:", Description = "xxxxx")]
     public string DescripcionRequisicion { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Estatus de Requisicion:", Description = "xxxxx")]
     public Nullable<int> RequisicionEstatusId { get; set; }
 
+
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Comentario de Requisicion:", Description = "xxxxx")]
     public string CometarioRequisicion { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Cantidad de Requisicion:", Description = "xxxxx")]
     public Nullable<int> CantidadRequisicion { get; set; }
 
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Id Empresa de Requisicion:", Description = "xxxxx")]
     public Nullable<int> EmpresaId { get; set; }
 
+    [Required(ErrorMessage = "LEl Nombre es requerido")]
+    [Display(Name = "Usuario de Requisicion:", Description = "xxxxx")]
     public Nullable<int> UsuarioRequisicionId { get; set; }
+        
 
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<AsignacionRequisicion> AsignacionRequisicion { get; set; }
 
