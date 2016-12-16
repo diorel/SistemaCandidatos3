@@ -258,9 +258,6 @@ namespace CandidatosSistema.Controllers
                 ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);
                 return View(Candidato.Where(x => x.EmpresaId == em));
             }
-
-
-
             else
             {
                 ViewBag.CarpetaArchivos = string.Format("../{0}", Properties.Settings.Default.CarpetaArchivos);

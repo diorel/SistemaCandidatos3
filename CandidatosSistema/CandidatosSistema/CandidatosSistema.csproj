@@ -221,11 +221,13 @@
     <Compile Include="Controllers\GraficaEmpresaController.cs" />
     <Compile Include="Controllers\GraficaEstatusController.cs" />
     <Compile Include="Controllers\GraficaEstudiosController.cs" />
+    <Compile Include="Controllers\GraficaMapaCandidatosController.cs" />
     <Compile Include="Controllers\GraficaProfesionController.cs" />
     <Compile Include="Controllers\GraficaSueldoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RequisicionesController.cs" />
     <Compile Include="Controllers\SueldoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -234,6 +236,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AsignacionRequisicion.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AsignacionVacante.cs">
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
@@ -272,6 +277,21 @@
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Requisicion.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequisicionArea.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequisicionEstatus.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequisicionLocalidad.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequisicionSueldo.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sueldo.cs">
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
@@ -281,6 +301,12 @@
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioPlataforma.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioRequisicion.cs">
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vacante.cs">
@@ -434,6 +460,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\GraficaMapaCandidatos\Mapa.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -538,6 +565,12 @@
     <Content Include="Views\Vacantes\Details.cshtml" />
     <Content Include="Views\Vacantes\Edit.cshtml" />
     <Content Include="Views\Vacantes\Index.cshtml" />
+    <Content Include="Views\GraficaMapaCandidatos\Index.cshtml" />
+    <Content Include="Views\Requisiciones\Create.cshtml" />
+    <Content Include="Views\Requisiciones\Delete.cshtml" />
+    <Content Include="Views\Requisiciones\Details.cshtml" />
+    <Content Include="Views\Requisiciones\Edit.cshtml" />
+    <Content Include="Views\Requisiciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

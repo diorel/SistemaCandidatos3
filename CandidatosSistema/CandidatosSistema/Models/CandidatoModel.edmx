@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SisCandidatosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsignacionRequisicion">
+          <Key>
+            <PropertyRef Name="AsignacionRequisicionId" />
+          </Key>
+          <Property Name="AsignacionRequisicionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidatoId" Type="int" />
+          <Property Name="RequisicionId" Type="int" />
+          <Property Name="AsignacionEstatus" Type="int" />
+          <Property Name="AsignacionFecha" Type="date" />
+        </EntityType>
         <EntityType Name="AsignacionVacante">
           <Key>
             <PropertyRef Name="AsignacionVacanteId" />
@@ -36,6 +46,7 @@
           <Property Name="ComentarioEstatus" Type="varchar" MaxLength="350" />
           <Property Name="Area" Type="varchar" MaxLength="150" />
           <Property Name="EmpresaId" Type="int" />
+          <Property Name="UsuarioPlataformaId" Type="int" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -87,6 +98,64 @@
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
         </EntityType>
+        <EntityType Name="Requisicion">
+          <Key>
+            <PropertyRef Name="RequisicionId" />
+          </Key>
+          <Property Name="RequisicionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequisicionTitulo" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="RequisicionFecha" Type="date" />
+          <Property Name="RequisicionAreaId" Type="int" />
+          <Property Name="RequisicionLocalidadId" Type="int" />
+          <Property Name="Delegacion_Municipio" Type="varchar" MaxLength="80" />
+          <Property Name="RequisicionSueldoId" Type="int" />
+          <Property Name="DescripcionRequisicion" Type="varchar" MaxLength="450" Nullable="false" />
+          <Property Name="RequisicionEstatusId" Type="int" />
+          <Property Name="CometarioRequisicion" Type="varchar" MaxLength="140" Nullable="false" />
+          <Property Name="CantidadRequisicion" Type="int" />
+          <Property Name="EmpresaId" Type="int" />
+          <Property Name="UsuarioRequisicionId" Type="int" />
+        </EntityType>
+        <EntityType Name="RequisicionArea">
+          <Key>
+            <PropertyRef Name="RequisicionAreaId" />
+          </Key>
+          <Property Name="RequisicionAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
+        <EntityType Name="RequisicionEstatus">
+          <Key>
+            <PropertyRef Name="RequisicionEstatusId" />
+          </Key>
+          <Property Name="RequisicionEstatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
+        <EntityType Name="RequisicionLocalidad">
+          <Key>
+            <PropertyRef Name="RequisicionLocalidadId" />
+          </Key>
+          <Property Name="RequisicionLocalidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
+        <EntityType Name="RequisicionSueldo">
+          <Key>
+            <PropertyRef Name="RequisicionSueldoId" />
+          </Key>
+          <Property Name="RequisicionSueldoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
         <EntityType Name="Sueldo">
           <Key>
             <PropertyRef Name="SueldoId" />
@@ -111,6 +180,27 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="FechaAlta" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
+        <EntityType Name="UsuarioPlataforma">
+          <Key>
+            <PropertyRef Name="UsuarioPlataformaId" />
+          </Key>
+          <Property Name="UsuarioPlataformaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="80" />
+          <Property Name="Contecraseña" Type="varchar" MaxLength="80" />
+          <Property Name="EstadoUsuario" Type="bit" />
+          <Property Name="FechaAlta" Type="date" />
+        </EntityType>
+        <EntityType Name="UsuarioRequisicion">
+          <Key>
+            <PropertyRef Name="UsuarioRequisicionId" />
+          </Key>
+          <Property Name="UsuarioRequisicionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="80" />
+          <Property Name="Usuario" Type="varchar" MaxLength="80" />
+          <Property Name="Contecraseña" Type="varchar" MaxLength="80" />
+          <Property Name="EstadoUsuario" Type="bit" />
+          <Property Name="FechaAlta" Type="date" />
+        </EntityType>
         <EntityType Name="Vacante">
           <Key>
             <PropertyRef Name="VacanteId" />
@@ -127,6 +217,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="CometarioVacante" Type="varchar" MaxLength="140" Nullable="false" />
           <Property Name="EmpresaId" Type="int" />
           <Property Name="RepresentanteEmpresa" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="CantidadVacante" Type="int" />
         </EntityType>
         <EntityType Name="VacanteArea">
           <Key>
@@ -168,6 +259,30 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaCaptura" Type="date" />
         </EntityType>
+        <Association Name="FK_AsignacionRequisicion_Candidato">
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="0..1" />
+          <End Role="AsignacionRequisicion" Type="Self.AsignacionRequisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="CandidatoId" />
+            </Principal>
+            <Dependent Role="AsignacionRequisicion">
+              <PropertyRef Name="CandidatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignacionRequisicion_Requisicion">
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="0..1" />
+          <End Role="AsignacionRequisicion" Type="Self.AsignacionRequisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requisicion">
+              <PropertyRef Name="RequisicionId" />
+            </Principal>
+            <Dependent Role="AsignacionRequisicion">
+              <PropertyRef Name="RequisicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AsignacionVacante_Candidato">
           <End Role="Candidato" Type="Self.Candidato" Multiplicity="0..1" />
           <End Role="AsignacionVacante" Type="Self.AsignacionVacante" Multiplicity="*" />
@@ -264,6 +379,90 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Candidato_UsuarioPlataforma">
+          <End Role="UsuarioPlataforma" Type="Self.UsuarioPlataforma" Multiplicity="0..1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioPlataforma">
+              <PropertyRef Name="UsuarioPlataformaId" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="UsuarioPlataformaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionArea">
+          <End Role="RequisicionArea" Type="Self.RequisicionArea" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionArea">
+              <PropertyRef Name="RequisicionAreaId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionEstatus">
+          <End Role="RequisicionEstatus" Type="Self.RequisicionEstatus" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionEstatus">
+              <PropertyRef Name="RequisicionEstatusId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionEstatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionLocalidad">
+          <End Role="RequisicionLocalidad" Type="Self.RequisicionLocalidad" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionLocalidad">
+              <PropertyRef Name="RequisicionLocalidadId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionLocalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionSueldo">
+          <End Role="RequisicionSueldo" Type="Self.RequisicionSueldo" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionSueldo">
+              <PropertyRef Name="RequisicionSueldoId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionSueldoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_UsuarioRequisicion">
+          <End Role="UsuarioRequisicion" Type="Self.UsuarioRequisicion" Multiplicity="0..1" />
+          <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioRequisicion">
+              <PropertyRef Name="UsuarioRequisicionId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="UsuarioRequisicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vacante_Empresa">
           <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
           <End Role="Vacante" Type="Self.Vacante" Multiplicity="*" />
@@ -325,6 +524,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SisCandidatosModelStoreContainer">
+          <EntitySet Name="AsignacionRequisicion" EntityType="Self.AsignacionRequisicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AsignacionVacante" EntityType="Self.AsignacionVacante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
@@ -332,7 +532,14 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Localidad" EntityType="Self.Localidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requisicion" EntityType="Self.Requisicion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequisicionArea" EntityType="Self.RequisicionArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequisicionEstatus" EntityType="Self.RequisicionEstatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequisicionLocalidad" EntityType="Self.RequisicionLocalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequisicionSueldo" EntityType="Self.RequisicionSueldo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sueldo" EntityType="Self.Sueldo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPlataforma" EntityType="Self.UsuarioPlataforma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioRequisicion" EntityType="Self.UsuarioRequisicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacante" EntityType="Self.Vacante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VacanteArea" EntityType="Self.VacanteArea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VacanteEstatus" EntityType="Self.VacanteEstatus" Schema="dbo" store:Type="Tables" />
@@ -349,6 +556,14 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
     [Usuario].[Estado] AS [Estado]
     FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_AsignacionRequisicion_Candidato" Association="Self.FK_AsignacionRequisicion_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignacionRequisicion_Requisicion" Association="Self.FK_AsignacionRequisicion_Requisicion">
+            <End Role="Requisicion" EntitySet="Requisicion" />
+            <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+          </AssociationSet>
           <AssociationSet Name="FK_AsignacionVacante_Candidato" Association="Self.FK_AsignacionVacante_Candidato">
             <End Role="Candidato" EntitySet="Candidato" />
             <End Role="AsignacionVacante" EntitySet="AsignacionVacante" />
@@ -380,6 +595,34 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <AssociationSet Name="FK_Candidato_Sueldo" Association="Self.FK_Candidato_Sueldo">
             <End Role="Sueldo" EntitySet="Sueldo" />
             <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_UsuarioPlataforma" Association="Self.FK_Candidato_UsuarioPlataforma">
+            <End Role="UsuarioPlataforma" EntitySet="UsuarioPlataforma" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_Empresa" Association="Self.FK_Requisicion_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionArea" Association="Self.FK_Requisicion_RequisicionArea">
+            <End Role="RequisicionArea" EntitySet="RequisicionArea" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionEstatus" Association="Self.FK_Requisicion_RequisicionEstatus">
+            <End Role="RequisicionEstatus" EntitySet="RequisicionEstatus" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionLocalidad" Association="Self.FK_Requisicion_RequisicionLocalidad">
+            <End Role="RequisicionLocalidad" EntitySet="RequisicionLocalidad" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionSueldo" Association="Self.FK_Requisicion_RequisicionSueldo">
+            <End Role="RequisicionSueldo" EntitySet="RequisicionSueldo" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_UsuarioRequisicion" Association="Self.FK_Requisicion_UsuarioRequisicion">
+            <End Role="UsuarioRequisicion" EntitySet="UsuarioRequisicion" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacante_Empresa" Association="Self.FK_Vacante_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
@@ -434,6 +677,9 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="EmpresaId" Type="Int32" />
           <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Candidato" ToRole="Empresa" />
           <NavigationProperty Name="AsignacionVacante" Relationship="SisCandidatosModel.FK_AsignacionVacante_Candidato" FromRole="Candidato" ToRole="AsignacionVacante" />
+          <Property Name="UsuarioPlataformaId" Type="Int32" />
+          <NavigationProperty Name="AsignacionRequisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Candidato" FromRole="Candidato" ToRole="AsignacionRequisicion" />
+          <NavigationProperty Name="UsuarioPlataforma" Relationship="SisCandidatosModel.FK_Candidato_UsuarioPlataforma" FromRole="Candidato" ToRole="UsuarioPlataforma" />
         </EntityType>
         <EntityType Name="Escolaridad">
           <Key>
@@ -584,6 +830,50 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Vacante" EntitySet="Vacante" />
           </AssociationSet>
+          <EntitySet Name="AsignacionRequisicion" EntityType="SisCandidatosModel.AsignacionRequisicion" />
+          <EntitySet Name="Requisicion" EntityType="SisCandidatosModel.Requisicion" />
+          <EntitySet Name="RequisicionArea" EntityType="SisCandidatosModel.RequisicionArea" />
+          <EntitySet Name="RequisicionEstatus" EntityType="SisCandidatosModel.RequisicionEstatus" />
+          <EntitySet Name="RequisicionLocalidad" EntityType="SisCandidatosModel.RequisicionLocalidad" />
+          <EntitySet Name="RequisicionSueldo" EntityType="SisCandidatosModel.RequisicionSueldo" />
+          <EntitySet Name="UsuarioPlataforma" EntityType="SisCandidatosModel.UsuarioPlataforma" />
+          <EntitySet Name="UsuarioRequisicion" EntityType="SisCandidatosModel.UsuarioRequisicion" />
+          <AssociationSet Name="FK_AsignacionRequisicion_Candidato" Association="SisCandidatosModel.FK_AsignacionRequisicion_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignacionRequisicion_Requisicion" Association="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion">
+            <End Role="Requisicion" EntitySet="Requisicion" />
+            <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_UsuarioPlataforma" Association="SisCandidatosModel.FK_Candidato_UsuarioPlataforma">
+            <End Role="UsuarioPlataforma" EntitySet="UsuarioPlataforma" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_Empresa" Association="SisCandidatosModel.FK_Requisicion_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionArea" Association="SisCandidatosModel.FK_Requisicion_RequisicionArea">
+            <End Role="RequisicionArea" EntitySet="RequisicionArea" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionEstatus" Association="SisCandidatosModel.FK_Requisicion_RequisicionEstatus">
+            <End Role="RequisicionEstatus" EntitySet="RequisicionEstatus" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionLocalidad" Association="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad">
+            <End Role="RequisicionLocalidad" EntitySet="RequisicionLocalidad" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_RequisicionSueldo" Association="SisCandidatosModel.FK_Requisicion_RequisicionSueldo">
+            <End Role="RequisicionSueldo" EntitySet="RequisicionSueldo" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisicion_UsuarioRequisicion" Association="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion">
+            <End Role="UsuarioRequisicion" EntitySet="UsuarioRequisicion" />
+            <End Role="Requisicion" EntitySet="Requisicion" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Especialidad">
           <Key>
@@ -642,6 +932,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
           <NavigationProperty Name="Vacante" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Empresa" ToRole="Vacante" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_Empresa" FromRole="Empresa" ToRole="Requisicion" />
         </EntityType>
         <Association Name="FK_Candidato_Empresa">
           <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -677,6 +968,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <Property Name="EmpresaId" Type="Int32" />
           <Property Name="RepresentanteEmpresa" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Vacante" ToRole="Empresa" />
+          <Property Name="CantidadVacante" Type="Int32" />
         </EntityType>
         <EntityType Name="VacanteArea">
           <Key>
@@ -822,6 +1114,218 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AsignacionRequisicion">
+          <Key>
+            <PropertyRef Name="AsignacionRequisicionId" />
+          </Key>
+          <Property Name="AsignacionRequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidatoId" Type="Int32" />
+          <Property Name="RequisicionId" Type="Int32" />
+          <Property Name="AsignacionEstatus" Type="Int32" />
+          <Property Name="AsignacionFecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Candidato" FromRole="AsignacionRequisicion" ToRole="Candidato" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion" FromRole="AsignacionRequisicion" ToRole="Requisicion" />
+        </EntityType>
+        <EntityType Name="Requisicion">
+          <Key>
+            <PropertyRef Name="RequisicionId" />
+          </Key>
+          <Property Name="RequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequisicionTitulo" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="RequisicionFecha" Type="DateTime" Precision="0" />
+          <Property Name="RequisicionAreaId" Type="Int32" />
+          <Property Name="RequisicionLocalidadId" Type="Int32" />
+          <Property Name="Delegacion_Municipio" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="RequisicionSueldoId" Type="Int32" />
+          <Property Name="DescripcionRequisicion" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="RequisicionEstatusId" Type="Int32" />
+          <Property Name="CometarioRequisicion" Type="String" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadRequisicion" Type="Int32" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="UsuarioRequisicionId" Type="Int32" />
+          <NavigationProperty Name="AsignacionRequisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion" FromRole="Requisicion" ToRole="AsignacionRequisicion" />
+          <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Requisicion_Empresa" FromRole="Requisicion" ToRole="Empresa" />
+          <NavigationProperty Name="RequisicionArea" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionArea" FromRole="Requisicion" ToRole="RequisicionArea" />
+          <NavigationProperty Name="RequisicionEstatus" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionEstatus" FromRole="Requisicion" ToRole="RequisicionEstatus" />
+          <NavigationProperty Name="RequisicionLocalidad" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad" FromRole="Requisicion" ToRole="RequisicionLocalidad" />
+          <NavigationProperty Name="RequisicionSueldo" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionSueldo" FromRole="Requisicion" ToRole="RequisicionSueldo" />
+          <NavigationProperty Name="UsuarioRequisicion" Relationship="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion" FromRole="Requisicion" ToRole="UsuarioRequisicion" />
+        </EntityType>
+        <EntityType Name="RequisicionArea">
+          <Key>
+            <PropertyRef Name="RequisicionAreaId" />
+          </Key>
+          <Property Name="RequisicionAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionArea" FromRole="RequisicionArea" ToRole="Requisicion" />
+        </EntityType>
+        <EntityType Name="RequisicionEstatus">
+          <Key>
+            <PropertyRef Name="RequisicionEstatusId" />
+          </Key>
+          <Property Name="RequisicionEstatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionEstatus" FromRole="RequisicionEstatus" ToRole="Requisicion" />
+        </EntityType>
+        <EntityType Name="RequisicionLocalidad">
+          <Key>
+            <PropertyRef Name="RequisicionLocalidadId" />
+          </Key>
+          <Property Name="RequisicionLocalidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad" FromRole="RequisicionLocalidad" ToRole="Requisicion" />
+        </EntityType>
+        <EntityType Name="RequisicionSueldo">
+          <Key>
+            <PropertyRef Name="RequisicionSueldoId" />
+          </Key>
+          <Property Name="RequisicionSueldoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionSueldo" FromRole="RequisicionSueldo" ToRole="Requisicion" />
+        </EntityType>
+        <EntityType Name="UsuarioPlataforma">
+          <Key>
+            <PropertyRef Name="UsuarioPlataformaId" />
+          </Key>
+          <Property Name="UsuarioPlataformaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Contecraseña" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoUsuario" Type="Boolean" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_UsuarioPlataforma" FromRole="UsuarioPlataforma" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="UsuarioRequisicion">
+          <Key>
+            <PropertyRef Name="UsuarioRequisicionId" />
+          </Key>
+          <Property Name="UsuarioRequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Contecraseña" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoUsuario" Type="Boolean" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion" FromRole="UsuarioRequisicion" ToRole="Requisicion" />
+        </EntityType>
+        <Association Name="FK_AsignacionRequisicion_Candidato">
+          <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.AsignacionRequisicion" Role="AsignacionRequisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="CandidatoId" />
+            </Principal>
+            <Dependent Role="AsignacionRequisicion">
+              <PropertyRef Name="CandidatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignacionRequisicion_Requisicion">
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.AsignacionRequisicion" Role="AsignacionRequisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requisicion">
+              <PropertyRef Name="RequisicionId" />
+            </Principal>
+            <Dependent Role="AsignacionRequisicion">
+              <PropertyRef Name="RequisicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_UsuarioPlataforma">
+          <End Type="SisCandidatosModel.UsuarioPlataforma" Role="UsuarioPlataforma" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioPlataforma">
+              <PropertyRef Name="UsuarioPlataformaId" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="UsuarioPlataformaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_Empresa">
+          <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionArea">
+          <End Type="SisCandidatosModel.RequisicionArea" Role="RequisicionArea" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionArea">
+              <PropertyRef Name="RequisicionAreaId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionEstatus">
+          <End Type="SisCandidatosModel.RequisicionEstatus" Role="RequisicionEstatus" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionEstatus">
+              <PropertyRef Name="RequisicionEstatusId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionEstatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionLocalidad">
+          <End Type="SisCandidatosModel.RequisicionLocalidad" Role="RequisicionLocalidad" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionLocalidad">
+              <PropertyRef Name="RequisicionLocalidadId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionLocalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_RequisicionSueldo">
+          <End Type="SisCandidatosModel.RequisicionSueldo" Role="RequisicionSueldo" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequisicionSueldo">
+              <PropertyRef Name="RequisicionSueldoId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="RequisicionSueldoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisicion_UsuarioRequisicion">
+          <End Type="SisCandidatosModel.UsuarioRequisicion" Role="UsuarioRequisicion" Multiplicity="0..1" />
+          <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioRequisicion">
+              <PropertyRef Name="UsuarioRequisicionId" />
+            </Principal>
+            <Dependent Role="Requisicion">
+              <PropertyRef Name="UsuarioRequisicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -831,6 +1335,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <EntitySetMapping Name="Candidato">
             <EntityTypeMapping TypeName="SisCandidatosModel.Candidato">
               <MappingFragment StoreEntitySet="Candidato">
+                <ScalarProperty Name="UsuarioPlataformaId" ColumnName="UsuarioPlataformaId" />
                 <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
                 <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="ComentarioEstatus" ColumnName="ComentarioEstatus" />
@@ -933,6 +1438,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
           <EntitySetMapping Name="Vacante">
             <EntityTypeMapping TypeName="SisCandidatosModel.Vacante">
               <MappingFragment StoreEntitySet="Vacante">
+                <ScalarProperty Name="CantidadVacante" ColumnName="CantidadVacante" />
                 <ScalarProperty Name="RepresentanteEmpresa" ColumnName="RepresentanteEmpresa" />
                 <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
                 <ScalarProperty Name="CometarioVacante" ColumnName="CometarioVacante" />
@@ -1000,6 +1506,103 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
                 <ScalarProperty Name="VacanteId" ColumnName="VacanteId" />
                 <ScalarProperty Name="CandidatoId" ColumnName="CandidatoId" />
                 <ScalarProperty Name="AsignacionVacanteId" ColumnName="AsignacionVacanteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsignacionRequisicion">
+            <EntityTypeMapping TypeName="SisCandidatosModel.AsignacionRequisicion">
+              <MappingFragment StoreEntitySet="AsignacionRequisicion">
+                <ScalarProperty Name="AsignacionFecha" ColumnName="AsignacionFecha" />
+                <ScalarProperty Name="AsignacionEstatus" ColumnName="AsignacionEstatus" />
+                <ScalarProperty Name="RequisicionId" ColumnName="RequisicionId" />
+                <ScalarProperty Name="CandidatoId" ColumnName="CandidatoId" />
+                <ScalarProperty Name="AsignacionRequisicionId" ColumnName="AsignacionRequisicionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requisicion">
+            <EntityTypeMapping TypeName="SisCandidatosModel.Requisicion">
+              <MappingFragment StoreEntitySet="Requisicion">
+                <ScalarProperty Name="UsuarioRequisicionId" ColumnName="UsuarioRequisicionId" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="CantidadRequisicion" ColumnName="CantidadRequisicion" />
+                <ScalarProperty Name="CometarioRequisicion" ColumnName="CometarioRequisicion" />
+                <ScalarProperty Name="RequisicionEstatusId" ColumnName="RequisicionEstatusId" />
+                <ScalarProperty Name="DescripcionRequisicion" ColumnName="DescripcionRequisicion" />
+                <ScalarProperty Name="RequisicionSueldoId" ColumnName="RequisicionSueldoId" />
+                <ScalarProperty Name="Delegacion_Municipio" ColumnName="Delegacion_Municipio" />
+                <ScalarProperty Name="RequisicionLocalidadId" ColumnName="RequisicionLocalidadId" />
+                <ScalarProperty Name="RequisicionAreaId" ColumnName="RequisicionAreaId" />
+                <ScalarProperty Name="RequisicionFecha" ColumnName="RequisicionFecha" />
+                <ScalarProperty Name="RequisicionTitulo" ColumnName="RequisicionTitulo" />
+                <ScalarProperty Name="RequisicionId" ColumnName="RequisicionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequisicionArea">
+            <EntityTypeMapping TypeName="SisCandidatosModel.RequisicionArea">
+              <MappingFragment StoreEntitySet="RequisicionArea">
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RequisicionAreaId" ColumnName="RequisicionAreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequisicionEstatus">
+            <EntityTypeMapping TypeName="SisCandidatosModel.RequisicionEstatus">
+              <MappingFragment StoreEntitySet="RequisicionEstatus">
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RequisicionEstatusId" ColumnName="RequisicionEstatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequisicionLocalidad">
+            <EntityTypeMapping TypeName="SisCandidatosModel.RequisicionLocalidad">
+              <MappingFragment StoreEntitySet="RequisicionLocalidad">
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RequisicionLocalidadId" ColumnName="RequisicionLocalidadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequisicionSueldo">
+            <EntityTypeMapping TypeName="SisCandidatosModel.RequisicionSueldo">
+              <MappingFragment StoreEntitySet="RequisicionSueldo">
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RequisicionSueldoId" ColumnName="RequisicionSueldoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioPlataforma">
+            <EntityTypeMapping TypeName="SisCandidatosModel.UsuarioPlataforma">
+              <MappingFragment StoreEntitySet="UsuarioPlataforma">
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="Contecraseña" ColumnName="Contecraseña" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="UsuarioPlataformaId" ColumnName="UsuarioPlataformaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioRequisicion">
+            <EntityTypeMapping TypeName="SisCandidatosModel.UsuarioRequisicion">
+              <MappingFragment StoreEntitySet="UsuarioRequisicion">
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="Contecraseña" ColumnName="Contecraseña" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="UsuarioRequisicionId" ColumnName="UsuarioRequisicionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

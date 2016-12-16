@@ -1,0 +1,135 @@
+﻿@model IEnumerable<CandidatosSistema.Models.Requisicion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+<center> <h2 style="font-family: 'Fredoka One', cursive; color:#0c6b37;">Requisiciones&nbsp;<span class="glyphicon glyphicon-bell" aria-hidden="true"></span> </h2> </center>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create")" class="btn btn-success">Nueva Requisicion <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+
+    @using (Html.BeginForm("Index", "Requisiciones", FormMethod.Get))
+    {
+        ////1) nombre del metodo 2) nombre del controller
+        <table>
+            <tr>
+                @*<td><h4> Localidad:</h4></td>
+                <td>@Html.DropDownList("VacanteLocalidadId", String.Empty) </td>
+                <td><h4>Salario:</h4></td>
+                <td>@Html.DropDownList("VacanteSueldoId", String.Empty)</td>
+                <td><h4>Area:</h4></td>
+                <td>@Html.DropDownList("VacanteAreaId", String.Empty)</td>
+                <td><h4>Empresa:</h4></td>
+                <td>@Html.DropDownList("EmpresaId", String.Empty)</td>*@
+            <tr>
+                @*<td><h4> Categoría:</h4></td>
+                    <td>@Html.DropDownList("EspecialidadId", String.Empty)</td>
+                    <td><h4> Estatus:</h4></td>
+                    <td>@Html.DropDownList("EstatusId", String.Empty)</td>
+                    <td><h4> Empresa</h4></td>
+                    <td>@Html.DropDownList("EmpresaId", String.Empty)</td>*@
+                <td></td>
+                <td>
+                    <button type="submit" value="Busqueda" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Busqueda
+                    </button>
+                </td>
+            </tr>
+        </table>
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionTitulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionFecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delegacion_Municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionRequisicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CometarioRequisicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadRequisicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionArea.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionEstatus.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionLocalidad.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisicionSueldo.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioRequisicion.Correo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionTitulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionFecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delegacion_Municipio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionRequisicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CometarioRequisicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadRequisicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionArea.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionEstatus.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionLocalidad.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionSueldo.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioRequisicion.Correo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RequisicionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RequisicionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RequisicionId })
+        </td>
+    </tr>
+}
+
+</table>

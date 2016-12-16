@@ -15,41 +15,34 @@ namespace CandidatosSistema.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Empresa
+public partial class UsuarioRequisicion
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Empresa()
+    public UsuarioRequisicion()
     {
-
-        this.Candidato = new HashSet<Candidato>();
-
-        this.Vacante = new HashSet<Vacante>();
 
         this.Requisicion = new HashSet<Requisicion>();
 
     }
 
 
-    public int EmpresaId { get; set; }
+    public int UsuarioRequisicionId { get; set; }
 
-    public string Clave { get; set; }
+ 
 
-    public string Descripcion { get; set; }
+    public string Usuario { get; set; }
 
-    public Nullable<bool> Estado { get; set; }
-
-    public Nullable<System.DateTime> FechaCaptura { get; set; }
+    public string Contecraseña { get; set; }
 
 
+    public string Correo { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public Nullable<bool> EstadoUsuario { get; set; }
 
-    public virtual ICollection<Candidato> Candidato { get; set; }
+    public Nullable<System.DateTime> FechaAlta { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Vacante> Vacante { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

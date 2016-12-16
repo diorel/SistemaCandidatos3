@@ -63,6 +63,22 @@ public partial class SisCandidatosEntities : DbContext
 
     public virtual DbSet<AsignacionVacante> AsignacionVacante { get; set; }
 
+    public virtual DbSet<AsignacionRequisicion> AsignacionRequisicion { get; set; }
+
+    public virtual DbSet<Requisicion> Requisicion { get; set; }
+
+    public virtual DbSet<RequisicionArea> RequisicionArea { get; set; }
+
+    public virtual DbSet<RequisicionEstatus> RequisicionEstatus { get; set; }
+
+    public virtual DbSet<RequisicionLocalidad> RequisicionLocalidad { get; set; }
+
+    public virtual DbSet<RequisicionSueldo> RequisicionSueldo { get; set; }
+
+    public virtual DbSet<UsuarioPlataforma> UsuarioPlataforma { get; set; }
+
+    public virtual DbSet<UsuarioRequisicion> UsuarioRequisicion { get; set; }
+
 
     public virtual ObjectResult<usp_Candidatos_Region_Result> usp_Candidatos_Region()
     {

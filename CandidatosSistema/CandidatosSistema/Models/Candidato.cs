@@ -25,61 +25,64 @@ using System;
 
         this.AsignacionVacante = new HashSet<AsignacionVacante>();
 
+        this.AsignacionRequisicion = new HashSet<AsignacionRequisicion>();
+
     }
+        public int CandidatoId { get; set; }
+        [Required(ErrorMessage = "El Nombre es requerido")]
+        [Display(Name = "Nombre:", Description = "xxxxx")]
+
+        public string Nombre { get; set; }
+        [Required(ErrorMessage = "El Telefono es Requerido")]
+        [Range(0, 999999999999999999, ErrorMessage = "tienes que ingrezar un numero del 0 al 9")]
+
+        public string Telefono { get; set; }
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail no es valido")]
+        [Required(ErrorMessage = "El Correo es Requerido")]
+        [Display(Name = "Email:", Description = "xxxxx")]
+        public string Correo { get; set; }
+        [Required(ErrorMessage = "Elija una Entidad")]
+        [Display(Name = "Estado", Description = "xxxxx")]
+
+        public Nullable<int> LocalidadId { get; set; }
+        [Required(ErrorMessage = "Elija un Salario")]
+
+        public Nullable<int> SueldoId { get; set; }
+        [Required(ErrorMessage = "Elija un garado de Estudios")]
+        public Nullable<int> EscolaridadId { get; set; }
+        [Required(ErrorMessage = "Elija una especialidad")]
+        public Nullable<int> EspecialidadId { get; set; }
+
+        public Nullable<bool> EstadoCandidato { get; set; }
+        [Display(Name = "Capturista:", Description = "xxxxx")]
+
+        public string Capturista { get; set; }
+        [Display(Name = "Fecha de Captura:", Description = "xxxxx")]
+
+        public Nullable<System.DateTime> FechaCaptura { get; set; }
+        [Display(Name = "CV:", Description = "xxxxx")]
+        [Required(ErrorMessage = "selecione un archivo")]
+
+        public string Archivo { get; set; }
+        [Required(ErrorMessage = "Es requerido este dato")]
+        [Display(Name = "Delegacion/Municipio", Description = "xxxxx")]
+
+        public string Municipio_colonia { get; set; }
+
+        public Nullable<int> EstatusId { get; set; }
+        [Display(Name = "Comentario Estatus:", Description = "xxxxx")]
+
+        public string ComentarioEstatus { get; set; }
+        [Display(Name = "Subespecialidad:", Description = "xxxxx")]
+
+        public string Area { get; set; }
+
+        [Required(ErrorMessage = "Es requerido este dato")]
+        [Display(Name = "Subespecialidad:", Description = "xxxxx")]
+        public Nullable<int> EmpresaId { get; set; }
 
 
-    public int CandidatoId { get; set; }
-   [Required(ErrorMessage = "El Nombre es requerido")]
-   [Display(Name = "Nombre:", Description = "xxxxx")]
-
-    public string Nombre { get; set; }
-    [Required(ErrorMessage = "El Telefono es Requerido")]
-    [Range(0, 999999999999999999, ErrorMessage = "tienes que ingrezar un numero del 0 al 9")]
-
-    public string Telefono { get; set; }
-    [DataType(DataType.EmailAddress, ErrorMessage = "E-mail no es valido")]
-    [Required(ErrorMessage = "El Correo es Requerido")]
-    [Display(Name = "Email:", Description = "xxxxx")]
-    public string Correo { get; set; }
-    [Required(ErrorMessage = "Elija una Entidad")]
-    [Display(Name = "Estado", Description = "xxxxx")]
-
-    public Nullable<int> LocalidadId { get; set; }
-   [Required(ErrorMessage = "Elija un Salario")]
-
-    public Nullable<int> SueldoId { get; set; }
-   [Required(ErrorMessage = "Elija un garado de Estudios")]
-    public Nullable<int> EscolaridadId { get; set; }
-   [Required(ErrorMessage = "Elija una especialidad")]
-   public Nullable<int> EspecialidadId { get; set; }
-
-    public Nullable<bool> EstadoCandidato { get; set; }
-    [Display(Name = "Capturista:", Description = "xxxxx")]
-
-    public string Capturista { get; set; }
-    [Display(Name = "Fecha de Captura:", Description = "xxxxx")]
-
-    public Nullable<System.DateTime> FechaCaptura { get; set; }
-    [Display(Name = "CV:", Description = "xxxxx")]
-    [Required(ErrorMessage = "selecione un archivo")]
-
-    public string Archivo { get; set; }
-    [Required(ErrorMessage = "Es requerido este dato")]
-    [Display(Name = "Delegacion/Municipio", Description = "xxxxx")]
-
-     public string Municipio_colonia { get; set; }
-
-    public Nullable<int> EstatusId { get; set; }
-    [Display(Name = "Comentario Estatus:", Description = "xxxxx")]
-
-    public string ComentarioEstatus { get; set; }
-    [Display(Name = "Subespecialidad:", Description = "xxxxx")]
-
-    public string Area { get; set; }
-
-   [Required(ErrorMessage = "Es requerido este dato")]
-    [Display(Name = "Subespecialidad:", Description = "xxxxx")]
-    public Nullable<int> EmpresaId { get; set; }
+        public Nullable<int> UsuarioPlataformaId { get; set; }
 
 
 
@@ -98,6 +101,12 @@ using System;
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<AsignacionVacante> AsignacionVacante { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<AsignacionRequisicion> AsignacionRequisicion { get; set; }
+
+    public virtual UsuarioPlataforma UsuarioPlataforma { get; set; }
 
 }
 

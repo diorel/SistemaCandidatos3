@@ -28,6 +28,9 @@
     <Property Name="EmpresaId" Type="Int32" />
     <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Candidato" ToRole="Empresa" />
     <NavigationProperty Name="AsignacionVacante" Relationship="SisCandidatosModel.FK_AsignacionVacante_Candidato" FromRole="Candidato" ToRole="AsignacionVacante" />
+    <Property Name="UsuarioPlataformaId" Type="Int32" />
+    <NavigationProperty Name="AsignacionRequisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Candidato" FromRole="Candidato" ToRole="AsignacionRequisicion" />
+    <NavigationProperty Name="UsuarioPlataforma" Relationship="SisCandidatosModel.FK_Candidato_UsuarioPlataforma" FromRole="Candidato" ToRole="UsuarioPlataforma" />
   </EntityType>
   <EntityType Name="Escolaridad">
     <Key>
@@ -178,6 +181,50 @@
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Vacante" EntitySet="Vacante" />
     </AssociationSet>
+    <EntitySet Name="AsignacionRequisicion" EntityType="SisCandidatosModel.AsignacionRequisicion" />
+    <EntitySet Name="Requisicion" EntityType="SisCandidatosModel.Requisicion" />
+    <EntitySet Name="RequisicionArea" EntityType="SisCandidatosModel.RequisicionArea" />
+    <EntitySet Name="RequisicionEstatus" EntityType="SisCandidatosModel.RequisicionEstatus" />
+    <EntitySet Name="RequisicionLocalidad" EntityType="SisCandidatosModel.RequisicionLocalidad" />
+    <EntitySet Name="RequisicionSueldo" EntityType="SisCandidatosModel.RequisicionSueldo" />
+    <EntitySet Name="UsuarioPlataforma" EntityType="SisCandidatosModel.UsuarioPlataforma" />
+    <EntitySet Name="UsuarioRequisicion" EntityType="SisCandidatosModel.UsuarioRequisicion" />
+    <AssociationSet Name="FK_AsignacionRequisicion_Candidato" Association="SisCandidatosModel.FK_AsignacionRequisicion_Candidato">
+      <End Role="Candidato" EntitySet="Candidato" />
+      <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsignacionRequisicion_Requisicion" Association="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion">
+      <End Role="Requisicion" EntitySet="Requisicion" />
+      <End Role="AsignacionRequisicion" EntitySet="AsignacionRequisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidato_UsuarioPlataforma" Association="SisCandidatosModel.FK_Candidato_UsuarioPlataforma">
+      <End Role="UsuarioPlataforma" EntitySet="UsuarioPlataforma" />
+      <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_Empresa" Association="SisCandidatosModel.FK_Requisicion_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_RequisicionArea" Association="SisCandidatosModel.FK_Requisicion_RequisicionArea">
+      <End Role="RequisicionArea" EntitySet="RequisicionArea" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_RequisicionEstatus" Association="SisCandidatosModel.FK_Requisicion_RequisicionEstatus">
+      <End Role="RequisicionEstatus" EntitySet="RequisicionEstatus" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_RequisicionLocalidad" Association="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad">
+      <End Role="RequisicionLocalidad" EntitySet="RequisicionLocalidad" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_RequisicionSueldo" Association="SisCandidatosModel.FK_Requisicion_RequisicionSueldo">
+      <End Role="RequisicionSueldo" EntitySet="RequisicionSueldo" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisicion_UsuarioRequisicion" Association="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion">
+      <End Role="UsuarioRequisicion" EntitySet="UsuarioRequisicion" />
+      <End Role="Requisicion" EntitySet="Requisicion" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Especialidad">
     <Key>
@@ -236,6 +283,7 @@
     <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_Empresa" FromRole="Empresa" ToRole="Candidato" />
     <NavigationProperty Name="Vacante" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Empresa" ToRole="Vacante" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_Empresa" FromRole="Empresa" ToRole="Requisicion" />
   </EntityType>
   <Association Name="FK_Candidato_Empresa">
     <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -271,6 +319,7 @@
     <Property Name="EmpresaId" Type="Int32" />
     <Property Name="RepresentanteEmpresa" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Vacante_Empresa" FromRole="Vacante" ToRole="Empresa" />
+    <Property Name="CantidadVacante" Type="Int32" />
   </EntityType>
   <EntityType Name="VacanteArea">
     <Key>
@@ -413,6 +462,218 @@
       </Principal>
       <Dependent Role="Vacante">
         <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AsignacionRequisicion">
+    <Key>
+      <PropertyRef Name="AsignacionRequisicionId" />
+    </Key>
+    <Property Name="AsignacionRequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CandidatoId" Type="Int32" />
+    <Property Name="RequisicionId" Type="Int32" />
+    <Property Name="AsignacionEstatus" Type="Int32" />
+    <Property Name="AsignacionFecha" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Candidato" FromRole="AsignacionRequisicion" ToRole="Candidato" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion" FromRole="AsignacionRequisicion" ToRole="Requisicion" />
+  </EntityType>
+  <EntityType Name="Requisicion">
+    <Key>
+      <PropertyRef Name="RequisicionId" />
+    </Key>
+    <Property Name="RequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequisicionTitulo" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="RequisicionFecha" Type="DateTime" Precision="0" />
+    <Property Name="RequisicionAreaId" Type="Int32" />
+    <Property Name="RequisicionLocalidadId" Type="Int32" />
+    <Property Name="Delegacion_Municipio" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="RequisicionSueldoId" Type="Int32" />
+    <Property Name="DescripcionRequisicion" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="RequisicionEstatusId" Type="Int32" />
+    <Property Name="CometarioRequisicion" Type="String" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadRequisicion" Type="Int32" />
+    <Property Name="EmpresaId" Type="Int32" />
+    <Property Name="UsuarioRequisicionId" Type="Int32" />
+    <NavigationProperty Name="AsignacionRequisicion" Relationship="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion" FromRole="Requisicion" ToRole="AsignacionRequisicion" />
+    <NavigationProperty Name="Empresa" Relationship="SisCandidatosModel.FK_Requisicion_Empresa" FromRole="Requisicion" ToRole="Empresa" />
+    <NavigationProperty Name="RequisicionArea" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionArea" FromRole="Requisicion" ToRole="RequisicionArea" />
+    <NavigationProperty Name="RequisicionEstatus" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionEstatus" FromRole="Requisicion" ToRole="RequisicionEstatus" />
+    <NavigationProperty Name="RequisicionLocalidad" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad" FromRole="Requisicion" ToRole="RequisicionLocalidad" />
+    <NavigationProperty Name="RequisicionSueldo" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionSueldo" FromRole="Requisicion" ToRole="RequisicionSueldo" />
+    <NavigationProperty Name="UsuarioRequisicion" Relationship="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion" FromRole="Requisicion" ToRole="UsuarioRequisicion" />
+  </EntityType>
+  <EntityType Name="RequisicionArea">
+    <Key>
+      <PropertyRef Name="RequisicionAreaId" />
+    </Key>
+    <Property Name="RequisicionAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionArea" FromRole="RequisicionArea" ToRole="Requisicion" />
+  </EntityType>
+  <EntityType Name="RequisicionEstatus">
+    <Key>
+      <PropertyRef Name="RequisicionEstatusId" />
+    </Key>
+    <Property Name="RequisicionEstatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionEstatus" FromRole="RequisicionEstatus" ToRole="Requisicion" />
+  </EntityType>
+  <EntityType Name="RequisicionLocalidad">
+    <Key>
+      <PropertyRef Name="RequisicionLocalidadId" />
+    </Key>
+    <Property Name="RequisicionLocalidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad" FromRole="RequisicionLocalidad" ToRole="Requisicion" />
+  </EntityType>
+  <EntityType Name="RequisicionSueldo">
+    <Key>
+      <PropertyRef Name="RequisicionSueldoId" />
+    </Key>
+    <Property Name="RequisicionSueldoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_RequisicionSueldo" FromRole="RequisicionSueldo" ToRole="Requisicion" />
+  </EntityType>
+  <EntityType Name="UsuarioPlataforma">
+    <Key>
+      <PropertyRef Name="UsuarioPlataformaId" />
+    </Key>
+    <Property Name="UsuarioPlataformaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Contecraseña" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoUsuario" Type="Boolean" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Candidato" Relationship="SisCandidatosModel.FK_Candidato_UsuarioPlataforma" FromRole="UsuarioPlataforma" ToRole="Candidato" />
+  </EntityType>
+  <EntityType Name="UsuarioRequisicion">
+    <Key>
+      <PropertyRef Name="UsuarioRequisicionId" />
+    </Key>
+    <Property Name="UsuarioRequisicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Contecraseña" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoUsuario" Type="Boolean" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Requisicion" Relationship="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion" FromRole="UsuarioRequisicion" ToRole="Requisicion" />
+  </EntityType>
+  <Association Name="FK_AsignacionRequisicion_Candidato">
+    <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.AsignacionRequisicion" Role="AsignacionRequisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidato">
+        <PropertyRef Name="CandidatoId" />
+      </Principal>
+      <Dependent Role="AsignacionRequisicion">
+        <PropertyRef Name="CandidatoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsignacionRequisicion_Requisicion">
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.AsignacionRequisicion" Role="AsignacionRequisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requisicion">
+        <PropertyRef Name="RequisicionId" />
+      </Principal>
+      <Dependent Role="AsignacionRequisicion">
+        <PropertyRef Name="RequisicionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidato_UsuarioPlataforma">
+    <End Type="SisCandidatosModel.UsuarioPlataforma" Role="UsuarioPlataforma" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Candidato" Role="Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioPlataforma">
+        <PropertyRef Name="UsuarioPlataformaId" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="UsuarioPlataformaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_Empresa">
+    <End Type="SisCandidatosModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_RequisicionArea">
+    <End Type="SisCandidatosModel.RequisicionArea" Role="RequisicionArea" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequisicionArea">
+        <PropertyRef Name="RequisicionAreaId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="RequisicionAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_RequisicionEstatus">
+    <End Type="SisCandidatosModel.RequisicionEstatus" Role="RequisicionEstatus" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequisicionEstatus">
+        <PropertyRef Name="RequisicionEstatusId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="RequisicionEstatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_RequisicionLocalidad">
+    <End Type="SisCandidatosModel.RequisicionLocalidad" Role="RequisicionLocalidad" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequisicionLocalidad">
+        <PropertyRef Name="RequisicionLocalidadId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="RequisicionLocalidadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_RequisicionSueldo">
+    <End Type="SisCandidatosModel.RequisicionSueldo" Role="RequisicionSueldo" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequisicionSueldo">
+        <PropertyRef Name="RequisicionSueldoId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="RequisicionSueldoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisicion_UsuarioRequisicion">
+    <End Type="SisCandidatosModel.UsuarioRequisicion" Role="UsuarioRequisicion" Multiplicity="0..1" />
+    <End Type="SisCandidatosModel.Requisicion" Role="Requisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioRequisicion">
+        <PropertyRef Name="UsuarioRequisicionId" />
+      </Principal>
+      <Dependent Role="Requisicion">
+        <PropertyRef Name="UsuarioRequisicionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
