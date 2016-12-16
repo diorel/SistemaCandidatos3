@@ -14,8 +14,9 @@ namespace CandidatosSistema.Models
 
 using System;
     using System.Collections.Generic;
-    
-public partial class Requisicion
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Requisicion
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,6 +29,8 @@ public partial class Requisicion
 
 
     public int RequisicionId { get; set; }
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [Display(Name = "Titulo de Requisicion:", Description = "xxxxx")]
 
     public string RequisicionTitulo { get; set; }
 
