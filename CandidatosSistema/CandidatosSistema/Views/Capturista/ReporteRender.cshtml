@@ -24,7 +24,7 @@
     <script>
         function ReportValidacionCheck()
         {
-            url = "http://192.168.2.76:89/Reportes/ReporteCadidatos.aspx";
+            url = "http://user-pc/ReportServer_DESAROLLO/Pages/ReportViewer.aspx?%2fReportesRys%2fReporteCandidatosActivo&rs:Command=Render";
             var myframe = document.getElementById("ifrmReportViewer");
             if (myframe != null)
             {
@@ -39,6 +39,28 @@
             return false;
         }
     </script>
+
+
+
+
+@*<script>
+        function ReportValidacionCheck()
+        {
+            url = "http://192.168.2.76:89/Reportes/ReporteCadidatos.aspx";
+            var myframe = document.getElementById("ifrmReportViewer");
+            if (myframe != null)
+            {
+                if (myframe.src) {
+                    myframe.src = url;
+                }
+                else if (myframe.contentWindow !== null && myframe.contentWindow.Location !== null) {
+                    myframe.contentWindow.location = url;
+                }
+                else {myframe.setAttribute('src',url) }
+            }
+            return false;
+        }
+</script>*@
 }
 
 

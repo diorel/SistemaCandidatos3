@@ -330,6 +330,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteCadidatos.aspx.cs">
+      <DependentUpon>ReporteCadidatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteCadidatos.aspx.designer.cs">
+      <DependentUpon>ReporteCadidatos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +372,7 @@
       <DependentUpon>CandidatoModel.edmx</DependentUpon>
       <LastGenOutput>CandidatoModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Reportes\ReporteCadidatos.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -575,7 +583,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Documents\" />
-    <Folder Include="Reportes\" />
     <Folder Include="Views\GaficaConsulta\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

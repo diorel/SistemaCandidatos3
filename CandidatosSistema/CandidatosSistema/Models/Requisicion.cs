@@ -28,6 +28,7 @@ using System;
     }
 
 
+
     public int RequisicionId { get; set; }
 
     [Required(ErrorMessage = "El Nombre es requerido")]
