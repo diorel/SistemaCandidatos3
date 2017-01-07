@@ -196,12 +196,30 @@ namespace CandidatosSistema.Controllers
 
 
 
-        // Este  metodo nos envia al reporte 
+        //reporte 1 
 
             public ActionResult ReporteRender()
             {
             return View();
             }
+
+        //reporte 2 
+
+        public ActionResult ReporteCandiatoRegion()
+        {
+            return View();
+        }
+
+
+        //reporte 3 
+
+        public ActionResult ReporteRendimientoReclutador()
+        {
+            return View();
+        }
+
+
+
 
         // Este es el metodo para la consulta
 

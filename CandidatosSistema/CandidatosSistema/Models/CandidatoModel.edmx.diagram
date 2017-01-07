@@ -17,12 +17,12 @@
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Especialidad" />
         <EntityTypeShape EntityType="SisCandidatosModel.Estatus" Width="1.5" PointX="11" PointY="5.25" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Estatus" />
-        <EntityTypeShape EntityType="SisCandidatosModel.Empresa" Width="1.5" PointX="3.25" PointY="6.75" />
+        <EntityTypeShape EntityType="SisCandidatosModel.Empresa" Width="1.5" PointX="2.625" PointY="7.25" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_Empresa" />
         <EntityTypeShape EntityType="SisCandidatosModel.Vacante" Width="1.5" PointX="7.25" PointY="8.625" />
-        <EntityTypeShape EntityType="SisCandidatosModel.VacanteArea" Width="1.5" PointX="7" PointY="14.375" />
+        <EntityTypeShape EntityType="SisCandidatosModel.VacanteArea" Width="1.5" PointX="8.5" PointY="15.375" />
         <EntityTypeShape EntityType="SisCandidatosModel.VacanteEstatus" Width="1.5" PointX="11.5" PointY="9.75" />
-        <EntityTypeShape EntityType="SisCandidatosModel.VacanteLocalidad" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SisCandidatosModel.VacanteLocalidad" Width="1.5" PointX="5.375" PointY="9.25" />
         <EntityTypeShape EntityType="SisCandidatosModel.VacanteSueldo" Width="1.5" PointX="10.25" PointY="14.75" />
         <AssociationConnector Association="SisCandidatosModel.FK_Vacante_VacanteArea" />
         <AssociationConnector Association="SisCandidatosModel.FK_Vacante_VacanteEstatus" />
@@ -39,7 +39,7 @@
         <EntityTypeShape EntityType="SisCandidatosModel.RequisicionLocalidad" Width="1.5" PointX="1" PointY="16.25" />
         <EntityTypeShape EntityType="SisCandidatosModel.RequisicionSueldo" Width="1.5" PointX="4.625" PointY="16" />
         <EntityTypeShape EntityType="SisCandidatosModel.UsuarioPlataforma" Width="1.5" PointX="7.875" PointY="1" />
-        <EntityTypeShape EntityType="SisCandidatosModel.UsuarioRequisicion" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SisCandidatosModel.UsuarioRequisicion" Width="1.5" PointX="6.25" PointY="14.25" />
         <AssociationConnector Association="SisCandidatosModel.FK_AsignacionRequisicion_Candidato" />
         <AssociationConnector Association="SisCandidatosModel.FK_AsignacionRequisicion_Requisicion" />
         <AssociationConnector Association="SisCandidatosModel.FK_Candidato_UsuarioPlataforma" />
@@ -49,6 +49,9 @@
         <AssociationConnector Association="SisCandidatosModel.FK_Requisicion_RequisicionLocalidad" />
         <AssociationConnector Association="SisCandidatosModel.FK_Requisicion_RequisicionSueldo" />
         <AssociationConnector Association="SisCandidatosModel.FK_Requisicion_UsuarioRequisicion" />
+        <EntityTypeShape EntityType="SisCandidatosModel.EmpresaUsuarioRequisicion" Width="2" PointX="4.875" PointY="11.625" />
+        <AssociationConnector Association="SisCandidatosModel.FK_EmpresaUsuarioRequisicion_Empresa" />
+        <AssociationConnector Association="SisCandidatosModel.FK_EmpresaUsuarioRequisicion_UsuarioRequisicion" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,59 @@
+﻿@model CandidatosSistema.Models.UsuarioRequisicion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UsuarioRequisicion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contecraseña)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contecraseña)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsuarioRequisicionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

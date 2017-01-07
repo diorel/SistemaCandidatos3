@@ -20,23 +20,49 @@
     {
         ////1) nombre del metodo 2) nombre del controller
 
+        @*<div class="row">
+            <div class="col-md-4"><table><tr><td><h4>Nombre:</h4></td><td>@Html.TextBox("Nombre", null, new { @class = "form-control" })</td></tr> </table></div>
+         
+            <div class="col-md-4"><table><tr><td><h4>Localidad:</h4></td><td>@Html.DropDownList("LocalidadId", null, "--selecciona--", htmlAttributes: new { @class = "form-control" })   </td></tr></table></div>
+            <div class="col-md-4"><table><tr><td><h4>   </h4></td><td>   </td></tr></table></div>
+            <div class="col-md-4"><table><tr><td><h4>   </h4></td><td>   </td></tr></table></div>
+            <div class="col-md-4"><table><tr><td><h4>   </h4></td><td>   </td></tr></table></div>
+            <div class="col-md-4"><table><tr><td><h4>   </h4></td><td>   </td></tr></table></div>
+            <div class="col-md-4"><table><tr><td><h4>   </h4></td><td>   </td></tr></table></div>
+
+
+
+
+            <div class="col-md-3"> </div>
+        </div>
+
+        <div class="row">
+
+
+
+        </div>*@
+
+
+
         <table>
             <tr>
                 <td><h4>Nombre:</h4></td>
-                <td> @Html.TextBox("Nombre", null, new { @class = "form-control" })   </td>
+                <td>@Html.TextBox("Nombre", null, new { @class = "form-control" })   </td>
                 <td><h4> Localidad:</h4></td>
-                <td>@Html.DropDownList("LocalidadId", String.Empty) </td>
+                @*<td>@Html.DropDownList("LocalidadId",null , String.Empty, new { @class = "form-control" }) </td>*@
+                <td>   @Html.DropDownList("LocalidadId", null, "--selecciona--", htmlAttributes: new { @class = "form-control" }) </td>
+
                 <td><h4>Salario:</h4></td>
-                <td>@Html.DropDownList("SueldoId", String.Empty)</td>
+                <td>@Html.DropDownList("SueldoId", null, "--Selecciona--", htmlAttributes: new { @class = "form-control" })</td>
                 <td><h4>Educacion:</h4></td>
-                <td>@Html.DropDownList("EscolaridadId", String.Empty) </td>
+                <td>@Html.DropDownList("EscolaridadId", null, "--Selecciona--", htmlAttributes: new { @class = "form-control" }) </td>
             <tr>
                 <td><h4> Categoría:</h4></td>
-                <td>@Html.DropDownList("EspecialidadId", String.Empty)</td>
+                <td>@Html.DropDownList("EspecialidadId", null, "--Selecciona--", htmlAttributes: new { @class = "form-control" })</td>
                 <td><h4> Estatus:</h4></td>
-                <td>@Html.DropDownList("EstatusId", String.Empty)</td>
+                <td>@Html.DropDownList("EstatusId", null, "--Selecciona--", htmlAttributes: new { @class = "form-control" })</td>
                 <td><h4> Empresa</h4></td>
-                <td>@Html.DropDownList("EmpresaId", String.Empty)</td>
+                <td>@Html.DropDownList("EmpresaId", null, "--Selecciona--", htmlAttributes: new { @class = "form-control" })</td>
                <td></td>
                 <td>
                     <button  type="submit" value="Busqueda" class="btn btn-success">
@@ -47,40 +73,46 @@
 
              </tr> 
         </table>
+
+
+
+
+ 
+
     }
 </p>
-<table   class="table table-hover">
-    <tr>
-        <th>
+<table   class="table table-hover" style="padding-right:50%">
+    <tr style="background-color:#434343; border">
+        <th style="color:white">
             Nombre
         </th>
-        <th>
+        <th style="color:white">
             Telefono
         </th>
 
-        <th>
+        <th style="color:white">
             Educacion
         </th>
-        <th>
+        <th style="color:white">
             Localidad
         </th>
-        <th>
+        <th style="color:white">
             Salario
         </th>
-        <th>
+        <th style="color:white">
             Categoría
         </th>
-        <th>
+        @*<th style="color:white">
             Email
-        </th>
-        <th>
+        </th>*@
+        <th style="color:white">
           CV
         </th>
-        <th>
+        <th style="color:white">
             Estatus
         </th>
 
-        <th>
+        <th style="color:white">
             Empresa
         </th>
 
@@ -88,7 +120,7 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="border-bottom:3px #ff6a00 solid;margin-bottom:3em;min-height: 128px">
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -108,9 +140,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Especialidad.Clave)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Correo)
-            </td>
+            </td>*@
             <td>
                 @if (!string.IsNullOrEmpty(item.Archivo))
                 {

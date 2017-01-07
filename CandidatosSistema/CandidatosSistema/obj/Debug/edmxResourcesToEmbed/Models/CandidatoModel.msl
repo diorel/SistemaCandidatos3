@@ -275,5 +275,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EmpresaUsuarioRequisicion">
+      <EntityTypeMapping TypeName="SisCandidatosModel.EmpresaUsuarioRequisicion">
+        <MappingFragment StoreEntitySet="EmpresaUsuarioRequisicion">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="UsuarioRequisicionId" ColumnName="UsuarioRequisicionId" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="IdEmpresaUsuarioRequisicion" ColumnName="IdEmpresaUsuarioRequisicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

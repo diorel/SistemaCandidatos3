@@ -28,6 +28,8 @@ using System;
         this.AsignacionRequisicion = new HashSet<AsignacionRequisicion>();
 
     }
+
+
         public int CandidatoId { get; set; }
         [Required(ErrorMessage = "El Nombre es requerido")]
         [Display(Name = "Nombre:", Description = "xxxxx")]
@@ -80,7 +82,6 @@ using System;
         [Required(ErrorMessage = "Es requerido este dato")]
         [Display(Name = "Subespecialidad:", Description = "xxxxx")]
         public Nullable<int> EmpresaId { get; set; }
-
 
         public Nullable<int> UsuarioPlataformaId { get; set; }
 

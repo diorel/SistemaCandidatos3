@@ -214,9 +214,12 @@
     <Compile Include="Controllers\CapturistaController.cs" />
     <Compile Include="Controllers\CerrarSesionController.cs" />
     <Compile Include="Controllers\ChartSampleController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\EmpresaUsuarioRequisicionesController.cs" />
     <Compile Include="Controllers\FiltroController.cs" />
     <Compile Include="Controllers\GaficaConsultaController.cs" />
     <Compile Include="Controllers\GaficaEmpresaPastelController.cs" />
+    <Compile Include="Controllers\GaficaIngresosDiariosController.cs" />
     <Compile Include="Controllers\GraficaCandidatosRegionController.cs" />
     <Compile Include="Controllers\GraficaEmpresaController.cs" />
     <Compile Include="Controllers\GraficaEstatusController.cs" />
@@ -230,6 +233,8 @@
     <Compile Include="Controllers\RequisicionesController.cs" />
     <Compile Include="Controllers\SueldoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsuarioRequisicions1Controller.cs" />
+    <Compile Include="Controllers\UsuarioRequisicionsController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VacantesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,6 +266,9 @@
       <DependentUpon>CandidatoModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Empresa.cs">
+      <DependentUpon>CandidatoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmpresaUsuarioRequisicion.cs">
       <DependentUpon>CandidatoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Escolaridad.cs">
@@ -579,6 +587,29 @@
     <Content Include="Views\Requisiciones\Details.cshtml" />
     <Content Include="Views\Requisiciones\Edit.cshtml" />
     <Content Include="Views\Requisiciones\Index.cshtml" />
+    <Content Include="Views\GaficaIngresosDiarios\Index.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\Capturista\ReporteCandiatoRegion.cshtml" />
+    <Content Include="Views\Capturista\ReporteRendimientoReclutador.cshtml" />
+    <Content Include="Views\EmpresaUsuarioRequisiciones\Create.cshtml" />
+    <Content Include="Views\EmpresaUsuarioRequisiciones\Delete.cshtml" />
+    <Content Include="Views\EmpresaUsuarioRequisiciones\Details.cshtml" />
+    <Content Include="Views\EmpresaUsuarioRequisiciones\Edit.cshtml" />
+    <Content Include="Views\EmpresaUsuarioRequisiciones\Index.cshtml" />
+    <Content Include="Views\UsuarioRequisicions\Create.cshtml" />
+    <Content Include="Views\UsuarioRequisicions\Delete.cshtml" />
+    <Content Include="Views\UsuarioRequisicions\Details.cshtml" />
+    <Content Include="Views\UsuarioRequisicions\Edit.cshtml" />
+    <Content Include="Views\UsuarioRequisicions\Index.cshtml" />
+    <Content Include="Views\UsuarioRequisicions1\Create.cshtml" />
+    <Content Include="Views\UsuarioRequisicions1\Delete.cshtml" />
+    <Content Include="Views\UsuarioRequisicions1\Details.cshtml" />
+    <Content Include="Views\UsuarioRequisicions1\Edit.cshtml" />
+    <Content Include="Views\UsuarioRequisicions1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

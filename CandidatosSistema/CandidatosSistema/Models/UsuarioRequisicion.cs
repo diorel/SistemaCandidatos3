@@ -24,19 +24,18 @@ public partial class UsuarioRequisicion
 
         this.Requisicion = new HashSet<Requisicion>();
 
+        this.EmpresaUsuarioRequisicion = new HashSet<EmpresaUsuarioRequisicion>();
+
     }
 
 
     public int UsuarioRequisicionId { get; set; }
 
- 
+    public string Correo { get; set; }
 
     public string Usuario { get; set; }
 
     public string Contecraseña { get; set; }
-
-
-    public string Correo { get; set; }
 
     public Nullable<bool> EstadoUsuario { get; set; }
 
@@ -47,6 +46,10 @@ public partial class UsuarioRequisicion
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Requisicion> Requisicion { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<EmpresaUsuarioRequisicion> EmpresaUsuarioRequisicion { get; set; }
 
 }
 

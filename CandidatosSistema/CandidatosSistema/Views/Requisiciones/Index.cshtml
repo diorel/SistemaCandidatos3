@@ -35,7 +35,7 @@
                     <td><h4> Empresa</h4></td>
                     <td>@Html.DropDownList("EmpresaId", String.Empty)</td>*@
                 <td></td>
-                <td>
+                <td style="visibility:hidden">
                     <button type="submit" value="Busqueda" class="btn btn-success">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Busqueda
                     </button>
@@ -48,86 +48,93 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RequisicionTitulo)
+            <p>Empresa</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RequisicionFecha)
+           <p>Titulo</p> 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Delegacion_Municipio)
+            <p> Especialidad</p>
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.DescripcionRequisicion)
+            <p>Estado</p>
         </th>
+    
         <th>
-            @Html.DisplayNameFor(model => model.CometarioRequisicion)
+           <p> Delegacion/Municipio</p>
         </th>
+        @*<th>
+            <p>Descripcion</p>
+        </th>*@
+        @*<th>
+            <p>Comentario</p>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.CantidadRequisicion)
+            <p>Cantidad</p>
         </th>
+ 
+     
         <th>
-            @Html.DisplayNameFor(model => model.Empresa.Clave)
+           <p>Estatus</p>
         </th>
+  
+        @*<th>
+            <p>Sueldo</p>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.RequisicionArea.Clave)
+            <p>Fecha</p>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequisicionEstatus.Clave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequisicionLocalidad.Clave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequisicionSueldo.Clave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UsuarioRequisicion.Correo)
-        </th>
+        @*<th>
+            <p>Representante</p>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RequisicionTitulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequisicionFecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delegacion_Municipio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescripcionRequisicion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CometarioRequisicion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CantidadRequisicion)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Empresa.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionTitulo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RequisicionArea.Clave)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RequisicionEstatus.Clave)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.RequisicionLocalidad.Clave)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RequisicionSueldo.Clave)
+            @Html.DisplayFor(modelItem => item.Delegacion_Municipio)
         </td>
+    
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DescripcionRequisicion)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CometarioRequisicion)
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.UsuarioRequisicion.Correo)
+            @Html.DisplayFor(modelItem => item.CantidadRequisicion)
         </td>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionEstatus.Clave)
+        </td>
+    
+        @*<td>
+            @Html.DisplayFor(modelItem => item.RequisicionSueldo.Clave)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.RequisicionFecha, "ShortDateTime")
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UsuarioRequisicion.Correo)
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RequisicionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RequisicionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RequisicionId })
+            @Html.ActionLink("Details", "Details", new { id=item.RequisicionId }) 
         </td>
     </tr>
 }

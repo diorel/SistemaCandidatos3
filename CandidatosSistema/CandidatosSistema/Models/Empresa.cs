@@ -28,6 +28,8 @@ public partial class Empresa
 
         this.Requisicion = new HashSet<Requisicion>();
 
+        this.EmpresaUsuarioRequisicion = new HashSet<EmpresaUsuarioRequisicion>();
+
     }
 
 
@@ -54,6 +56,10 @@ public partial class Empresa
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Requisicion> Requisicion { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<EmpresaUsuarioRequisicion> EmpresaUsuarioRequisicion { get; set; }
 
 }
 

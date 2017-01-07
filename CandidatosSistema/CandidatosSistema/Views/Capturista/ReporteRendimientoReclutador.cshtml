@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ReporteRendimientoReclutador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>reporte Candidato por Region</h2>
+<iframe id="ifrmReportViewer" style="height:3500px; width:99%;" frameborder="0" scrolling="no"></iframe>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            ReportValidacionCheck();
+        }
+        );
+    </script>
+    @*en esta parte se tendra que poner la direccion  donde esyta el aspx*@
+
+    <script>
+
+        function ReportValidacionCheck()
+        {
+            url = "http://user-pc/ReportServer_DESAROLLO/Pages/ReportViewer.aspx?%2fReportesRys%2fRendimeintoReclutador&rs:Command=Render";
+            var myframe = document.getElementById("ifrmReportViewer");
+            if (myframe != null)
+            {
+                if (myframe.src) {
+                    myframe.src = url;
+                }
+                else if (myframe.contentWindow !== null && myframe.contentWindow.Location !== null) {
+                    myframe.contentWindow.location = url;
+                }
+                else {myframe.setAttribute('src',url) }
+            }
+            return false;
+        }
+    </script>
+
+
+    @*<script>
+                function ReportValidacionCheck()
+                {
+                    url = "http://192.168.2.76:89/Reportes/ReporteCadidatos.aspx";
+                    var myframe = document.getElementById("ifrmReportViewer");
+                    if (myframe != null)
+                    {
+                        if (myframe.src) {
+                            myframe.src = url;
+                        }
+                        else if (myframe.contentWindow !== null && myframe.contentWindow.Location !== null) {
+                            myframe.contentWindow.location = url;
+                        }
+                        else {myframe.setAttribute('src',url) }
+                    }
+                    return false;
+                }
+        </script>*@
+}
+
+
+

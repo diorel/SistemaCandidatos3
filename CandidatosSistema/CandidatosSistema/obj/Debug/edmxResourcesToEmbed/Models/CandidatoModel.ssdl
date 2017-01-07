@@ -53,6 +53,15 @@
     <Property Name="Estado" Type="bit" />
     <Property Name="FechaCaptura" Type="date" />
   </EntityType>
+  <EntityType Name="EmpresaUsuarioRequisicion">
+    <Key>
+      <PropertyRef Name="IdEmpresaUsuarioRequisicion" />
+    </Key>
+    <Property Name="IdEmpresaUsuarioRequisicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpresaId" Type="int" />
+    <Property Name="UsuarioRequisicionId" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Escolaridad">
     <Key>
       <PropertyRef Name="EscolaridadId" />
@@ -386,6 +395,30 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EmpresaUsuarioRequisicion_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="EmpresaUsuarioRequisicion" Type="Self.EmpresaUsuarioRequisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="EmpresaUsuarioRequisicion">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpresaUsuarioRequisicion_UsuarioRequisicion">
+    <End Role="UsuarioRequisicion" Type="Self.UsuarioRequisicion" Multiplicity="0..1" />
+    <End Role="EmpresaUsuarioRequisicion" Type="Self.EmpresaUsuarioRequisicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioRequisicion">
+        <PropertyRef Name="UsuarioRequisicionId" />
+      </Principal>
+      <Dependent Role="EmpresaUsuarioRequisicion">
+        <PropertyRef Name="UsuarioRequisicionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Requisicion_Empresa">
     <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
     <End Role="Requisicion" Type="Self.Requisicion" Multiplicity="*" />
@@ -523,6 +556,7 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
     <EntitySet Name="AsignacionVacante" EntityType="Self.AsignacionVacante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpresaUsuarioRequisicion" EntityType="Self.EmpresaUsuarioRequisicion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
@@ -594,6 +628,14 @@ warning 6002: The table/view 'SisCandidatos.dbo.Usuario' does not have a primary
     <AssociationSet Name="FK_Candidato_UsuarioPlataforma" Association="Self.FK_Candidato_UsuarioPlataforma">
       <End Role="UsuarioPlataforma" EntitySet="UsuarioPlataforma" />
       <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpresaUsuarioRequisicion_Empresa" Association="Self.FK_EmpresaUsuarioRequisicion_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="EmpresaUsuarioRequisicion" EntitySet="EmpresaUsuarioRequisicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpresaUsuarioRequisicion_UsuarioRequisicion" Association="Self.FK_EmpresaUsuarioRequisicion_UsuarioRequisicion">
+      <End Role="UsuarioRequisicion" EntitySet="UsuarioRequisicion" />
+      <End Role="EmpresaUsuarioRequisicion" EntitySet="EmpresaUsuarioRequisicion" />
     </AssociationSet>
     <AssociationSet Name="FK_Requisicion_Empresa" Association="Self.FK_Requisicion_Empresa">
       <End Role="Empresa" EntitySet="Empresa" />

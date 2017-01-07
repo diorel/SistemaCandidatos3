@@ -21,6 +21,16 @@ namespace CandidatosSistema.Controllers
             return View(requisicion.ToList());
         }
 
+
+
+
+        //// GET: Requisiciones
+        //public ActionResult Index()
+        //{
+        //    var requisicion = db.Requisicion.Include(r => r.Empresa).Include(r => r.RequisicionArea).Include(r => r.RequisicionEstatus).Include(r => r.RequisicionLocalidad).Include(r => r.RequisicionSueldo).Include(r => r.UsuarioRequisicion);
+        //    return View(requisicion.ToList());
+        //}
+
         // GET: Requisiciones/Details/5
         public ActionResult Details(int? id)
         {

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CandidatosSistema.Models.UsuarioRequisicion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contecraseña)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contecraseña)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAlta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsuarioRequisicionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsuarioRequisicionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsuarioRequisicionId })
+        </td>
+    </tr>
+}
+
+</table>

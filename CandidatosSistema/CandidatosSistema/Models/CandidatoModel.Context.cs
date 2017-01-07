@@ -79,6 +79,8 @@ public partial class SisCandidatosEntities : DbContext
 
     public virtual DbSet<UsuarioRequisicion> UsuarioRequisicion { get; set; }
 
+    public virtual DbSet<EmpresaUsuarioRequisicion> EmpresaUsuarioRequisicion { get; set; }
+
 
     public virtual ObjectResult<usp_Candidatos_Region_Result> usp_Candidatos_Region()
     {
